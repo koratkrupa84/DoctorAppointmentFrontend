@@ -1,60 +1,112 @@
+/* ==============================
+   Patient Sidebar - Teal Medical Theme
+============================== */
+
 .patient-sidebar {
-  width: 230px;
-  min-height: 100vh;
-  background: var(--color-dark-purple);
-  color: var(--color-lightest);
-  padding: 20px;
-  font-family: var(--font-main);
+  width: 250px;
+  min-width: 220px;
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  height: 100vh;
   position: fixed;
-  left: 0;
   top: 0;
-  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+  left: 0;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-soft);
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  z-index: 100;
 }
 
 .patient-sidebar h2 {
-  margin: 20px 0;
-  font-size: 1.4rem;
-  color: var(--color-lightest);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 25px;
   text-align: center;
 }
 
 .patient-sidebar ul {
   list-style: none;
   padding: 0;
-  margin-bottom: 20px;
+  margin: 0;
+  flex: 1;
 }
 
-.patient-sidebar ul li {
-  margin: 15px 0;
+.patient-sidebar li {
+  margin-bottom: 15px;
 }
 
-.patient-sidebar ul li a {
-  display: block;
-  padding: 10px 15px;
-  border-radius: 8px;
-  color: var(--color-lightest);
+.patient-sidebar a {
+  color: var(--color-text-light);
   text-decoration: none;
-  transition: all 0.3s ease;
   font-weight: 500;
-}
-
-.patient-sidebar ul li a:hover {
-  background: var(--color-muted-purple);
-}
-
-.patient-sidebar .logout-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
   display: block;
-  width: 100%;
+  transition: 0.2s;
+}
+
+.patient-sidebar a:hover,
+.patient-sidebar a.active {
+  background: var(--color-primary-dark);
+  color: var(--color-accent);
+}
+
+.logout-btn {
+  margin-top: 20px;
   padding: 10px;
+  width: 100%;
+  background: var(--color-accent);
+  color: var(--color-primary-dark);
+  font-weight: 600;
   border: none;
   border-radius: 8px;
-  background: var(--color-regular-purple);
-  color: var(--color-lightest);
-  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.2s;
 }
 
-.patient-sidebar .logout-btn:hover {
-  background: var(--color-muted-purple);
+.logout-btn:hover {
+  background: var(--color-accent-hover);
+  color: var(--color-text-primary);
+}
+
+/* Responsive Sidebar */
+@media (max-width: 768px) {
+  .patient-sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .patient-sidebar h2 {
+    display: none;
+  }
+
+  .patient-sidebar ul {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .patient-sidebar li {
+    margin-bottom: 0;
+  }
+
+  .patient-sidebar a {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .logout-btn {
+    margin-top: 0;
+    margin-left: 15px;
+    padding: 6px 12px;
+    font-size: 14px;
+  }
 }

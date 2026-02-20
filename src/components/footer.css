@@ -1,47 +1,62 @@
-@import "../styles/variables.css";
+/* ==========================
+   Footer Component Styling
+   Theme: Teal Medical UI
+   ========================== */
 
-/* --- Footer General --- */
+@import url('../styles/variables.css'); /* adjust path if needed */
+
+/* ===== Footer Container ===== */
 .site-footer {
-  padding: 3rem 1rem;
-  background: var(--color-dark-purple); /* home page palette color */
-  color: var(--color-lightest);         /* white/light text */
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
   text-align: center;
-  font-family: var(--font-main);
+  padding: 20px 10px;
+  margin-top: 40px;
+  border-top: 3px solid var(--color-accent);
 }
 
-/* --- Footer Text --- */
+/* ===== Footer Text ===== */
 .site-footer p {
-  font-size: 1rem;
   margin: 0;
-  color: var(--color-lightest); /* consistent text color */
+  font-size: 14px;
+  letter-spacing: 0.5px;
 }
 
-/* --- Footer Links Container --- */
+/* ===== Footer Links Container ===== */
 .footer-links {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin-top: 1.5rem;
+  gap: 25px;
+  flex-wrap: wrap;
 }
 
-/* --- Individual Footer Text --- */
+/* ===== Footer Text Links ===== */
 .footer-text {
-  font-size: 1rem;
-  color: var(--color-soft-purple); /* subtle text */
-  transition: color 0.3s ease;
-}
-
-/* Optional hover effect */
-.footer-text:hover {
-  color: var(--color-lightest);
-}
-
-/* Clickable footer link (Feedback) */
-.footer-link {
+  font-size: 14px;
   cursor: pointer;
+  color: var(--color-text-light);
+  transition: 0.3s ease;
+}
+
+/* ===== Link Styling ===== */
+.footer-link {
   text-decoration: none;
 }
 
-.footer-link:hover {
-  text-decoration: underline;
+/* Hover Effect */
+.footer-text:hover {
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .footer-links {
+    gap: 15px;
+  }
+
+  .footer-text {
+    font-size: 13px;
+  }
 }

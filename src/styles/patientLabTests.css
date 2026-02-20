@@ -1,107 +1,109 @@
-@import './variables.css';
+/* ==========================
+   Patient Lab Tests Page
+========================== */
 
-/* -------- Page Layout -------- */
-.dashboard-page {
-  display: flex;
-  min-height: 100vh;
-  background-color: var(--color-lightest);
-  font-family: var(--font-main);
-}
-
-/* Sidebar ke baad content */
 .lab-tests-container {
-  margin-left: 260px; /* Sidebar space */
-  padding: 40px;
-  width: calc(100% - 260px);
-  box-sizing: border-box;
+  flex: 1;
+  padding: 30px;
+  margin-left: 250px; /* matches sidebar width */
+  min-height: 100vh;
+  background: #f0f4f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Title */
+@media (max-width: 768px) {
+  .lab-tests-container {
+    margin-left: 0;
+    padding: 20px 15px;
+  }
+}
+
 .lab-tests-container h2 {
-  font-size: 26px;
-  font-weight: bold;
+  font-size: 28px;
+  color: #004d40;
+  font-weight: 700;
   margin-bottom: 25px;
-  color: var(--color-dark-purple);
 }
 
-/* Table box */
+/* ------------------------------
+   Table Styling
+------------------------------ */
 .bookings-table {
   width: 100%;
   border-collapse: collapse;
   background: #fff;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  margin-top: 20px;
-  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
 }
 
-/* Table cells */
 .bookings-table th,
 .bookings-table td {
-  padding: 15px 20px;
+  padding: 12px 18px;
   text-align: left;
-  font-size: 15px;
-  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  color: #333;
 }
 
-.bookings-table th {
-  background: var(--color-regular-purple);
+.bookings-table thead {
+  background: #009688;
+  color: #fff;
+}
+
+.bookings-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.bookings-table tbody tr:hover {
+  background: #f1f8f7;
+}
+
+/* ------------------------------
+   Status Badges
+------------------------------ */
+.status {
+  padding: 4px 10px;
+  border-radius: 12px;
   color: #fff;
   font-weight: 600;
+  text-transform: capitalize;
+  font-size: 12px;
+  display: inline-block;
 }
 
-.bookings-table tr:hover {
-  background-color: #f9f5fc;
+.status-pending {
+  background-color: #ffc107;
 }
 
-/* -------- Status Colors -------- */
-.status.confirmed {
-  color: green;
-  font-weight: 600;
+.status-completed {
+  background-color: #28a745;
 }
 
-.status.pending {
-  color: orange;
-  font-weight: 600;
+.status-cancelled {
+  background-color: #dc3545;
 }
 
-.status.completed {
-  color: #28a745;
-  font-weight: 600;
+.status-inprogress {
+  background-color: #17a2b8;
 }
 
-.status.cancelled {
-  color: red;
-  font-weight: 600;
-}
-
-/* -------- No Data -------- */
-.no-bookings {
-  font-size: 16px;
-  color: var(--color-deep-purple);
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-/* Loading and Error States */
+/* ------------------------------
+   Empty & Loading States
+------------------------------ */
 .loading-container,
-.error-container {
+.error-container,
+.no-bookings {
   text-align: center;
-  padding: 40px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  font-size: 15px;
+  color: #555;
+  margin-top: 30px;
 }
 
-.loading-container p {
-  font-size: 16px;
-  color: var(--color-muted-purple);
-}
-
-.error-container p {
-  color: #dc3545;
-  font-size: 16px;
+/* Optional: responsive table scroll */
+@media (max-width: 768px) {
+  .bookings-table {
+    display: block;
+    overflow-x: auto;
+  }
 }

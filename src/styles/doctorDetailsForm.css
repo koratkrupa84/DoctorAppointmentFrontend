@@ -1,100 +1,137 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-@import './variables.css';
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;500;700&display=swap');
 
+/* ==============================
+   Container
+============================== */
 .doctor-form-container {
-  min-height: 100vh;
-  background-color: var(--color-lightest);
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-family: var(--font-main);
-  padding: 20px;
+  align-items: center;
+  padding: 60px 20px;
+  background-color: var(--color-bg-main);
+  min-height: 100vh;
+  font-family: 'Merriweather', serif;
 }
 
+/* ==============================
+   Form Card
+============================== */
 .doctor-form {
-  background-color: #fff;
-  padding: 40px 30px;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(16, 9, 29, 0.2);
+  background: var(--color-bg-card);
+  padding: 40px 35px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
   width: 100%;
-  max-width: 480px;
-  transition: transform 0.3s ease;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
-.doctor-form:hover {
-  transform: translateY(-3px);
-}
-
+/* ==============================
+   Form Header
+============================== */
 .doctor-form h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
   text-align: center;
-  margin-bottom: 25px;
-  color: var(--color-dark-purple);
-  font-size: 28px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 12px;
 }
 
+/* ==============================
+   Form Groups
+============================== */
 .form-group {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--color-muted-purple);
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 10px;
-  width: 100%;
-  border: 1.5px solid var(--color-regular-purple);
-  border-radius: 8px;
   font-size: 16px;
-  background-color: #fdfdfd;
-  color: #333;
-  transition: border-color 0.3s ease;
-  box-sizing: border-box;
+  font-weight: 500;
+  color: var(--color-text-primary);
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: var(--color-deep-purple);
+/* Input fields */
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="file"] {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-main);
+  transition: 0.3s;
+}
+
+.form-group input:focus {
   outline: none;
+  border-color: var(--color-primary-dark);
+  box-shadow: 0 0 0 3px rgba(0,128,128,0.15);
 }
 
-.submit-button {
-  background-color: var(--color-regular-purple);
-  color: white;
-  border: none;
-  padding: 12px;
-  width: 100%;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
+/* ==============================
+   File Input Styling
+============================== */
+.form-group input[type="file"] {
+  padding: 8px 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background-color: var(--color-bg-main);
+  color: var(--color-text-muted);
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button {
+  padding: 6px 12px;
+  border: 1px solid var(--color-primary-dark);
+  border-radius: 6px;
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* ==============================
+   Submit Button
+============================== */
+.submit-button {
+  padding: 12px 0;
+  border: 2px solid var(--color-primary-dark);
+  border-radius: 8px;
+  background-color: var(--color-bg-main);
+  color: var(--color-primary-dark);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
 }
 
 .submit-button:hover {
-  background-color: var(--color-deep-purple);
+  background-color: var(--color-primary-dark);
+  color: var(--color-text-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-/* Profile Picture Upload */
-.form-group input[type="file"] {
-  border: 2px solid var(--color-muted-purple);
-  border-radius: 8px;
-  padding: 8px;
-  width: 100%;
-  font-size: 15px;
-  background-color: #fdfdfd;
-  color: #333;
-  cursor: pointer;
-  transition: border-color 0.3s ease;
-}
-
-.form-group input[type="file"]:focus {
-  border-color: var(--color-deep-purple);
-  outline: none;
+/* ==============================
+   Responsive
+============================== */
+@media (max-width: 600px) {
+  .doctor-form {
+    padding: 30px 20px;
+  }
 }

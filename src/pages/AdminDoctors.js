@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { API } from '../config/api';
 import AdminSidebar from '../components/AdminSidebar';
-import '../styles/adminDashboard.css';
 import '../styles/adminDoctors.css';
 
 const AdminDoctors = () => {

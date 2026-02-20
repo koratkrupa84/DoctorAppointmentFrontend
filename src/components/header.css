@@ -1,94 +1,120 @@
-@import "../styles/variables.css";
+/* ==========================
+   Header Component Styling
+   Theme: Teal Medical UI
+   ========================== */
 
+@import url('../styles/variables.css'); /* adjust path if needed */
+
+/* ===== Header Container ===== */
 .site-header {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--color-regular-purple);
-  padding: 15px 50px;
-  color: #fff;
+  padding: 14px 40px;
+  box-shadow: var(--shadow-soft);
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-/* Logo */
+/* ===== Logo ===== */
 .logo {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
-  color: #fff;
   letter-spacing: 1px;
+  color: var(--color-text-light);
+  cursor: pointer;
 }
 
-/* Navigation */
-nav {
+/* ===== Navigation ===== */
+.site-header nav {
   display: flex;
   gap: 30px;
-  list-style: none;
-}
-
-nav li {
-  list-style: none;
-}
-
-nav a {
-  text-decoration: none;
-  font-size: 16px;
-  color: #fff;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: var(--color-lightest);
-}
-
-/* Login button */
-.login-btn {
-  padding: 8px 18px;
-  border: none;
-  border-radius: 6px;
-  background: #fff;
-  color: var(--color-regular-purple);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;  /* Remove underline */
-  display: inline-block;  /* Proper padding */
-}
-
-.login-btn:hover {
-  background: var(--color-dark-purple);
-  color: #fff;
-  text-decoration: none;  /* Ensure no underline on hover */
-}
-
-.header-actions {
-  display: flex;
-  gap: 15px;
   align-items: center;
 }
 
-/* Icon styling */
+.site-header nav li {
+  list-style: none;
+}
+
+.site-header nav a {
+  text-decoration: none;
+  color: var(--color-text-light);
+  font-weight: 500;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+/* Hover underline effect */
+.site-header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: 0.3s ease;
+}
+
+.site-header nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== Right Side Actions ===== */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ===== Login Button ===== */
+.login-btn {
+  background-color: var(--color-accent);
+  color: var(--color-text-primary);
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+/* ===== Dashboard Icon ===== */
 .dashboard-icon {
   font-size: 28px;
-  color: #fff;
   cursor: pointer;
-  transition: color 0.3s ease;
+  color: var(--color-text-light);
+  transition: 0.3s ease;
 }
 
 .dashboard-icon:hover {
-  color: var(--color-lightest);
+  color: var(--color-accent);
+  transform: scale(1.1);
 }
 
-/* Dashboard button / icon */
-.dashboard-btn {
-  font-size: 26px;
-  color: #fff;
-  transition: color 0.3s ease;
-  text-decoration: none;
-}
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 12px 20px;
+  }
 
-.dashboard-btn:hover {
-  color: var(--color-lightest);
+  .site-header nav {
+    gap: 15px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .login-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
 }

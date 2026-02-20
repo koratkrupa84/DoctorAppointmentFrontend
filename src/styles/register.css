@@ -1,120 +1,117 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-@import './variables.css';
+/* ================================
+   Register Page Styling
+   Teal Medical Theme
+================================ */
 
 .register-container {
   min-height: 100vh;
-  background-color: var(--color-lightest);
+  background: var(--color-bg-secondary);
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-family: var(--font-main);
-  padding: 20px;
+  align-items: center;
+  padding: 40px 20px;
 }
 
 .register-form {
-  background-color: #fff;
-  padding: 40px 30px;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(16, 9, 29, 0.2);
   width: 100%;
-  max-width: 480px;
-  transition: transform 0.3s ease;
-}
-
-.register-form:hover {
-  transform: translateY(-3px);
+  max-width: 500px;
+  background: var(--color-bg-card);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-border);
 }
 
 .register-form h2 {
   text-align: center;
   margin-bottom: 25px;
-  color: var(--color-dark-purple);
-  font-size: 28px;
+  color: var(--color-primary);
 }
 
+/* ===== Form Groups ===== */
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-  display: block;
   margin-bottom: 6px;
-  color: var(--color-muted-purple);
   font-weight: 500;
+  color: var(--color-text-primary);
 }
 
+/* ===== Inputs ===== */
 .form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 10px;
-  width: 100%;
-  border: 1.5px solid var(--color-regular-purple);
+.form-group textarea,
+.form-group select {
+  padding: 10px 12px;
   border-radius: 8px;
-  font-size: 16px;
-  background-color: #fdfdfd;
-  color: #333;
-  transition: border-color 0.3s ease;
-  box-sizing: border-box;
-}
-
-.register-form input[type="date"],
-.register-form input[type="email"],
-.register-form input[type="tel"],
-.register-form input[type="password"],
-.register-form input[type="text"] {
-  border: 2px solid var(--color-muted-purple);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-main);
+  color: var(--color-text-primary);
+  font-size: 14px;
+  transition: 0.3s ease;
 }
 
 .form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: var(--color-deep-purple);
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--color-primary);
   outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.15);
 }
 
+/* ===== Gender Options ===== */
 .gender-options {
   display: flex;
   gap: 15px;
-  margin-top: 6px;
-  color: var(--color-regular-purple);
+  flex-wrap: wrap;
 }
 
 .gender-options label {
-  font-weight: 400;
-  font-size: 15px;
-  color: var(--color-nearly-black);
+  font-size: 14px;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
+/* ===== Button ===== */
 .register-button {
-  background-color: var(--color-regular-purple);
-  color: white;
-  border: none;
-  padding: 12px;
   width: 100%;
+  padding: 12px;
   border-radius: 8px;
+  border: none;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
+  margin-top: 10px;
 }
 
 .register-button:hover {
-  background-color: var(--color-deep-purple);
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
 }
 
+/* ===== Login Redirect ===== */
 .login-redirect {
+  margin-top: 15px;
   text-align: center;
-  margin-top: 20px;
   font-size: 14px;
+  color: var(--color-text-muted);
 }
 
 .login-redirect a {
-  color: var(--color-regular-purple);
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 500;
 }
 
 .login-redirect a:hover {
-  color: var(--color-dark-purple);
+  color: var(--color-accent-hover);
   text-decoration: underline;
 }

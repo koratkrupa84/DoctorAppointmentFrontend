@@ -1,143 +1,97 @@
-@import './variables.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
+/* ===============================
+   Dashboard Page Layout
+================================= */
 .dashboard-page {
   display: flex;
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f6f9;
   min-height: 100vh;
-  font-family: var(--font-main);
-  background: linear-gradient(180deg, #faf7ff 0%, var(--color-lightest) 100%);
 }
 
-/* Content Area */
+/* ===============================
+   Main Content
+================================= */
 .dashboard-content {
-  margin-left: 260px; /* Slight gap from 240px sidebar */
-  padding: 32px 24px;
-  width: calc(100% - 260px);
-  box-sizing: border-box;
-  max-width: 1400px;
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
-/* Header */
+/* ===============================
+   Header
+================================= */
 .dashboard-header {
-  background: linear-gradient(135deg, var(--color-regular-purple), var(--color-dark-purple));
-  color: #fff;
-  padding: 28px;
+  background: #ffffff;
+  padding: 25px;
   border-radius: 16px;
-  margin: 0 20px 32px 20px; /* 👈 left-right space */
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-  border: 1px solid rgba(255,255,255,0.25);
-  backdrop-filter: saturate(120%) blur(2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .dashboard-header h1 {
-  font-size: 28px;
-  margin-bottom: 8px;
-  font-weight: 800;
-  letter-spacing: 0.2px;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.08);
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #1e293b;
 }
 
 .dashboard-header p {
-  font-size: 16px;
-  opacity: 0.9;
+  font-size: 14px;
+  color: #64748b;
 }
 
-.doctor-forgot-password-btn {
-  margin-top: 14px;
-  padding: 7px 14px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.doctor-forgot-password-btn:hover {
-  background-color: #ffffff;
-  color: var(--color-dark-purple);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
-}
-
-/* Stats Cards */
+/* ===============================
+   Stats Cards Container
+================================= */
 .stats-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-  margin: 0 20px; /* 👈 cards me bhi gap */
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
+/* ===============================
+   Individual Card
+================================= */
 .card {
-  width: 240px;
-  position: relative;
-  background: #fff;
-  padding: 24px;
+  flex: 1;
+  min-width: 220px;
+  background: #ffffff;
+  padding: 25px 20px;
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.10);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
-  border: 1px solid rgba(0,0,0,0.06); /* Softer neutral border */
-  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 30px rgba(0,0,0,0.18);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
 .card h2 {
-  font-size: 18px;
-  color: var(--color-dark-purple);
-  margin-bottom: 10px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1e293b;
+  margin-bottom: 12px;
 }
 
 .card p {
   font-size: 20px;
-  color: var(--color-regular-purple);
-  font-weight: 800;
+  font-weight: 600;
+  color: #0284c7;
 }
 
-/* Motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .card,
-  .card:hover {
-    transition: none;
-    transform: none;
-  }
-}
-
-/* Responsiveness */
-@media (max-width: 992px) {
-  .dashboard-content {
-    margin-left: 0;
-    width: 100%;
-    padding: 24px 16px;
-  }
-
-  .dashboard-header {
-    margin: 0 0 24px 0;
-  }
-
+/* ===============================
+   Responsive Design
+================================= */
+@media (max-width: 900px) {
   .stats-cards {
-    margin: 0;
-    gap: 16px;
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
-  .dashboard-header {
-    padding: 20px;
+    flex-direction: column;
   }
 
   .card {
-    padding: 18px;
-  }
-
-  .stats-cards {
-    grid-template-columns: 1fr;
+    min-width: 100%;
   }
 }

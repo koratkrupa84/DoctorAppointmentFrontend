@@ -1,184 +1,140 @@
-@import './variables.css';
-
-.dashboard-page {
-  display: flex;
-  min-height: 100vh;
-  background-color: var(--color-lightest);
-  font-family: var(--font-main);
-}
-
-/* Simple standalone feedback form (from home footer) */
-.feedback-form-only-page {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-lightest);
-  font-family: var(--font-main);
-  padding: 20px;
-  box-sizing: border-box;
-}
+/* ==========================
+   Patient Feedback Page
+========================== */
 
 .feedback-container {
-  margin-left: 260px;
-  padding: 40px;
-  width: calc(100% - 260px);
-  box-sizing: border-box;
+  flex: 1;
+  padding: 30px;
+  margin-left: 250px; /* matches sidebar width */
+  background: #f0f4f8;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.feedback-container.form-only {
-  margin-left: 0;
-  width: 100%;
-  max-width: 640px;
-  padding: 0;
+@media (max-width: 768px) {
+  .feedback-container {
+    margin-left: 0;
+    padding: 20px 15px;
+  }
 }
 
+/* ------------------------------
+   Header
+------------------------------ */
 .feedback-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .feedback-header h2 {
-  font-size: 26px;
-  font-weight: bold;
-  color: var(--color-dark-purple);
+  font-size: 28px;
+  color: #004d40;
+  font-weight: 700;
 }
 
 .submit-feedback-btn {
-  background-color: var(--color-regular-purple);
+  background: #009688;
   color: #fff;
   border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .submit-feedback-btn:hover {
-  background-color: var(--color-dark-purple);
+  background: #00796b;
 }
 
-.error-message {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  border: 1px solid #f5c6cb;
-}
-
+/* ------------------------------
+   Feedback Form Card
+------------------------------ */
 .feedback-form-card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 30px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
   margin-bottom: 30px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
 .feedback-form-card h3 {
-  color: var(--color-dark-purple);
+  font-size: 22px;
+  color: #004d40;
   margin-bottom: 20px;
-  font-size: 20px;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--color-dark-purple);
+  margin-bottom: 6px;
   font-weight: 600;
-  font-size: 14px;
+  color: #00796b;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 15px;
-  font-family: var(--font-main);
-  transition: border-color 0.3s;
-  box-sizing: border-box;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
+  border-color: #009688;
+  box-shadow: 0 0 8px rgba(0, 150, 136, 0.3);
   outline: none;
-  border-color: var(--color-regular-purple);
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 120px;
 }
 
 .form-actions {
   display: flex;
-  gap: 12px;
   justify-content: flex-end;
-  margin-top: 24px;
+  gap: 12px;
 }
 
-.cancel-btn,
 .submit-btn {
-  padding: 12px 24px;
+  background: #009688;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
-  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #00796b;
 }
 
 .cancel-btn {
-  background-color: #6c757d;
-  color: #fff;
+  background: #e0e0e0;
+  color: #555;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .cancel-btn:hover {
-  background-color: #5a6268;
+  background: #bdbdbd;
 }
 
-.submit-btn {
-  background-color: var(--color-regular-purple);
-  color: #fff;
-}
-
-.submit-btn:hover:not(:disabled) {
-  background-color: var(--color-dark-purple);
-}
-
-.submit-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.loading-container,
-.no-feedback {
-  text-align: center;
-  padding: 40px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.loading-container p,
-.no-feedback p {
-  font-size: 16px;
-  color: var(--color-muted-purple);
-  margin: 8px 0;
-}
-
+/* ------------------------------
+   Feedback Cards
+------------------------------ */
 .feedbacks-list {
   display: flex;
   flex-direction: column;
@@ -186,101 +142,112 @@
 }
 
 .feedback-card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 24px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
 .feedback-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
 .feedback-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
-  gap: 12px;
-}
-
-.feedback-subject-rating {
-  flex: 1;
-  min-width: 200px;
 }
 
 .feedback-subject-rating h3 {
-  color: var(--color-dark-purple);
-  margin: 0 0 8px 0;
   font-size: 18px;
+  color: #004d40;
+  font-weight: 600;
 }
 
 .rating-display {
-  font-size: 18px;
-  color: #ffc107;
+  color: #ffb400;
+  font-size: 14px;
+  margin-top: 4px;
 }
 
 .feedback-meta {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
 }
 
 .status-badge {
-  padding: 6px 12px;
-  border-radius: 20px;
-  color: #fff;
+  padding: 4px 10px;
+  border-radius: 10px;
   font-size: 12px;
+  color: #fff;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .feedback-date {
-  font-size: 13px;
-  color: var(--color-muted-purple);
+  font-size: 12px;
+  color: #555;
 }
 
+/* ------------------------------
+   Feedback Message
+------------------------------ */
 .feedback-message {
-  margin: 16px 0;
-  padding: 16px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  border-left: 4px solid var(--color-regular-purple);
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 12px;
+  line-height: 1.5;
 }
 
-.feedback-message p {
-  color: var(--color-deep-purple);
-  line-height: 1.6;
-  margin: 0;
-}
-
+/* ------------------------------
+   Admin Response
+------------------------------ */
 .admin-response {
-  margin-top: 16px;
-  padding: 16px;
-  background-color: #e7f3ff;
-  border-radius: 8px;
-  border-left: 4px solid #007bff;
+  background: #e0f7fa;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #004d40;
+  line-height: 1.5;
+  margin-top: 10px;
 }
 
 .admin-response h4 {
-  color: var(--color-dark-purple);
-  margin: 0 0 8px 0;
-  font-size: 14px;
+  font-size: 15px;
+  margin-bottom: 6px;
   font-weight: 600;
-}
-
-.admin-response p {
-  color: var(--color-deep-purple);
-  line-height: 1.6;
-  margin: 0 0 8px 0;
+  color: #00796b;
 }
 
 .admin-response small {
-  color: var(--color-muted-purple);
-  font-size: 12px;
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  color: #555;
 }
 
+/* ------------------------------
+   Error & Loading
+------------------------------ */
+.error-message {
+  background: #ffcdd2;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  color: #b71c1c;
+  font-weight: 600;
+}
+
+.loading-container,
+.no-feedback {
+  text-align: center;
+  font-size: 15px;
+  color: #555;
+  margin-top: 30px;
+}

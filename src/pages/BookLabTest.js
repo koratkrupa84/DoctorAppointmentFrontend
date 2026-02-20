@@ -185,77 +185,73 @@ const BookLabTest = () => {
           <h1>Book Lab Test</h1>
         </div>
 
-        <div className="test-details-card">
-          <h2>{test.test_name}</h2>
-          {test.description && <p className="test-description">{test.description}</p>}
-          <div className="test-price">
-            <span>Price: ₹{test.price}</span>
+        <div className="test-booking-wrapper">
+          <div className="test-details-card">
+            <h2>{test.test_name}</h2>
+            {test.description && <p className="test-description">{test.description}</p>}
+            <div className="test-price">Price: ₹{test.price}</div>
           </div>
+
+          <form className="booking-form" onSubmit={handleSubmit}>
+            {/* Date */}
+            <div className="form-group">
+              <label>Select Date *</label>
+              <input
+                type="date"
+                name="date"
+                value={formData.date}
+                onChange={handleInputChange}
+                min={new Date().toISOString().split('T')[0]}
+                required
+              />
+            </div>
+
+            {/* Time Slots */}
+            <div className="form-group">
+              <label htmlFor="time">Select Time *</label>
+              <select
+                id="time"
+                name="time"
+                value={formData.time}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="">Select time</option>
+                {timeSlots.map((time) => (
+                  <option key={time} value={time}>
+                    {time}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Notes */}
+            <div className="form-group">
+              <label>Additional Notes</label>
+              <textarea
+                name="notes"
+                value={formData.notes}
+                onChange={handleInputChange}
+                rows="4"
+                placeholder="Any special instructions or notes..."
+              />
+            </div>
+
+            {/* Messages */}
+            {message && (
+              <div className={`message ${message.includes("successfully") ? "success" : "error"}`}>
+                {message}
+              </div>
+            )}
+
+            {/* Form Actions */}
+            <div className="form-actions">
+              <button type="submit" className="submit-btn">Book Lab Test</button>
+              <button type="button" className="cancel-btn" onClick={() => navigate("/lab-tests")}>Cancel</button>
+            </div>
+          </form>
         </div>
 
-        <form className="booking-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="date">Select Date *</label>
-            <input
-              type="date"
-              id="date"
-              name="date"
-              value={formData.date}
-              onChange={handleInputChange}
-              min={new Date().toISOString().split('T')[0]}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="time">Select Time *</label>
-            <select
-              id="time"
-              name="time"
-              value={formData.time}
-              onChange={handleInputChange}
-              required
-            >
-              <option value="">Select time</option>
-              {timeSlots.map((time) => (
-                <option key={time} value={time}>
-                  {time}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="notes">Additional Notes (Optional)</label>
-            <textarea
-              id="notes"
-              name="notes"
-              value={formData.notes}
-              onChange={handleInputChange}
-              rows="4"
-              placeholder="Any special instructions or notes..."
-            />
-          </div>
-
-          {message && (
-            <div className={`message ${message.includes("successfully") ? "success" : "error"}`}>
-              {message}
-            </div>
-          )}
-
-          <div className="form-actions">
-            <button type="submit" className="submit-btn">
-              Book Lab Test
-            </button>
-            <button
-              type="button"
-              className="cancel-btn"
-              onClick={() => navigate("/lab-tests")}
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
       </div>
       <Footer />
     </>

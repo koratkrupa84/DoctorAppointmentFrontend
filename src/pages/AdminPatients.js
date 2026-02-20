@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { API } from '../config/api';
 import AdminSidebar from '../components/AdminSidebar';
-import '../styles/adminUsers.css';
+import '../styles/adminPatients.css';
 
 const AdminPatients = () => {
   const [users, setUsers] = useState([]);

@@ -1,66 +1,92 @@
-@import './variables.css';
+/* ================================
+   Doctor Appointments Page - Teal Medical UI
+   ================================ */
 
 .appointments-page {
   display: flex;
   min-height: 100vh;
-  background-color: var(--color-lightest);
-  font-family: var(--font-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--color-bg-main);
 }
 
 .appointments-content {
-  margin-left: 260px; /* Sidebar space */
-  padding: 40px;
-  width: calc(100% - 260px);
+  flex: 1;
+  padding: 2rem;
 }
 
-/* Title */
 .appointments-content h1 {
-  font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 25px;
-  color: var(--color-dark-purple);
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
 }
 
-/* Table box */
+/* ===== Table Styling ===== */
 .appointments-table {
   width: 100%;
   border-collapse: collapse;
-  background: #fff;
-  border-radius: 14px;
+  background: var(--color-bg-card);
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-
-  /* 👇 Extra spacing so it doesn’t stick */
-  margin-top: 20px;
-  margin-bottom: 30px;
+  box-shadow: var(--shadow-soft);
 }
 
-/* Table cells */
-.appointments-table th, 
+.appointments-table th,
 .appointments-table td {
-  padding: 15px 20px;
+  padding: 12px 16px;
   text-align: left;
-  font-size: 15px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 14px;
 }
 
 .appointments-table th {
-  background: var(--color-regular-purple);
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-text-light);
   font-weight: 600;
 }
 
 .appointments-table tr:hover {
-  background-color: #f9f5fc;
+  background: var(--color-primary-light);
 }
 
-/* Status Colors */
-.status.upcoming {
-  color: var(--color-regular-purple);
+/* ===== Status Badges ===== */
+.status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  color: var(--color-text-light);
   font-weight: 600;
+  text-transform: capitalize;
+  display: inline-block;
+  font-size: 13px;
+}
+
+.status.pending {
+  background: #FFA500; /* Orange */
+}
+
+.status.confirmed {
+  background: #008080; /* Teal */
 }
 
 .status.completed {
-  color: green;
-  font-weight: 600;
+  background: #4CAF50; /* Green */
+}
+
+.status.cancelled {
+  background: #F44336; /* Red */
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .appointments-page {
+    flex-direction: column;
+  }
+
+  .appointments-content {
+    padding: 1rem;
+  }
+
+  .appointments-table th,
+  .appointments-table td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
 }

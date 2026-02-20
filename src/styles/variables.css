@@ -1,12 +1,36 @@
-:root {
-  --color-lightest: #D9D8D9;
-  --color-soft-purple: #B3A3BA;
-  --color-muted-purple: #8D769A;
-  --color-regular-purple: #68507B;
-  --color-dark-purple: #46315C;
-  --color-deep-purple: #28193D;
-  --color-nearly-black: #10091D;
+  /* ================================
+    Theme Variables - Teal Medical UI
+    ================================ */
 
-  --font-main: 'Roboto', sans-serif;
-}
+  :root {
 
+    /* ===== Primary Colors ===== */
+    --color-primary: #008080;        /* Teal / Forest Green */
+    --color-primary-dark: #006666;   /* Slightly darker shade for hover */
+    --color-primary-light: #33A3A3;  /* Light variation */
+
+    /* ===== Background Colors ===== */
+    --color-bg-main: #FFFFFF;        /* Main body background */
+    --color-bg-secondary: #D3D3D3;   /* Secondary background */
+    --color-bg-card: #F8F8F8;        /* Optional soft card background */
+
+    /* ===== Accent Colors ===== */
+    --color-accent: #00FFFF;         /* Light Blue / Cyan */
+    --color-accent-hover: #00E5E5;   /* Accent hover */
+
+    /* ===== Text Colors ===== */
+    --color-text-primary: #000000;   /* Black text */
+    --color-text-light: #FFFFFF;     /* White text */
+    --color-text-muted: #555555;     /* Soft text */
+
+    /* ===== Border & Shadow ===== */
+    --color-border: #D3D3D3;
+    --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+    /* ===== Button Colors ===== */
+    --btn-primary-bg: var(--color-primary);
+    --btn-primary-text: #FFFFFF;
+    --btn-accent-bg: var(--color-accent);
+    --btn-accent-text: #000000;
+
+  }

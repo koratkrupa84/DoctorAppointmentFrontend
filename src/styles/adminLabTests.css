@@ -1,64 +1,146 @@
-@import './variables.css';
-@import './adminDashboard.css';
+/* ===========================================
+   ADMIN LAB TESTS – ENTERPRISE STYLE
+   Matches Your Existing Admin Theme
+=========================================== */
 
 .admin-lab-tests {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: var(--bg-card);
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-color);
 }
 
+/* Header */
 .lab-tests-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .lab-tests-header h2 {
-  color: var(--color-dark-purple);
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-primary);
+  position: relative;
 }
 
-.btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
+.lab-tests-header h2::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  background: var(--primary);
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  border-radius: 10px;
+}
+
+/* ===============================
+   TABLE
+================================ */
+
+.lab-tests-table {
+  overflow-x: auto;
+  border-radius: 16px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(12px);
+}
+
+.lab-tests-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lab-tests-table thead {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.lab-tests-table th {
+  padding: 18px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.lab-tests-table td {
+  padding: 18px;
   font-size: 14px;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  vertical-align: middle;
+}
+
+.lab-tests-table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.lab-tests-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: scale(1.01);
+}
+
+/* Price Highlight */
+.lab-tests-table td:nth-child(3) {
+  font-weight: 600;
+  color: var(--success);
+  font-size: 15px;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.btn {
+  padding: 8px 18px;
+  border-radius: 30px;
+  border: none;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
+/* Primary */
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-regular-purple), var(--color-dark-purple));
-  color: white;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(104, 80, 123, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(37, 99, 235, 0.7);
 }
 
+/* Edit */
 .btn-edit {
-  background: #28a745;
-  color: white;
-  margin-right: 8px;
+  background: rgba(255,255,255,0.08);
+  color: var(--text-primary);
+  margin-right: 10px;
+  border: 1px solid var(--border-color);
 }
 
 .btn-edit:hover {
-  background: #218838;
+  background: rgba(255,255,255,0.15);
 }
 
+/* Delete */
 .btn-delete {
-  background: #dc3545;
-  color: white;
+  background: linear-gradient(135deg, var(--danger), #991b1b);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
 }
 
 .btn-delete:hover {
-  background: #c82333;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(239, 68, 68, 0.7);
 }
 
 .btn:disabled {
@@ -66,109 +148,55 @@
   cursor: not-allowed;
 }
 
-.lab-tests-table {
-  overflow-x: auto;
-}
+/* ===============================
+   MODAL
+================================ */
 
-.lab-tests-table table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.lab-tests-table th,
-.lab-tests-table td {
-  padding: 15px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-}
-
-.lab-tests-table th {
-  background: var(--color-regular-purple);
-  color: white;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.lab-tests-table tr:hover {
-  background-color: #f9f5fc;
-}
-
-.lab-tests-table td {
-  color: var(--color-deep-purple);
-  font-size: 14px;
-}
-
-.no-data {
-  text-align: center;
-  padding: 40px;
-  color: var(--color-muted-purple);
-}
-
-/* Modal Styles */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  background: rgba(0,0,0,0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(6px);
 }
 
 .modal-content {
-  background: white;
-  border-radius: 12px;
-  padding: 0;
-  max-width: 500px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  background: var(--bg-card);
+  width: 500px;
+  max-width: 95%;
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 25px;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 25px;
 }
 
 .modal-header h3 {
-  margin: 0;
-  color: var(--color-dark-purple);
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .modal-close {
   background: none;
   border: none;
-  font-size: 28px;
-  color: var(--color-muted-purple);
+  font-size: 22px;
+  color: var(--text-secondary);
   cursor: pointer;
-  padding: 0;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: all 0.2s ease;
 }
 
-.modal-close:hover {
-  background: #f0f0f0;
-  color: var(--color-dark-purple);
-}
-
-.modal-content form {
-  padding: 25px;
-}
+/* ===============================
+   FORM
+================================ */
 
 .form-group {
   margin-bottom: 20px;
@@ -176,67 +204,55 @@
 
 .form-group label {
   display: block;
-  margin-bottom: 8px;
-  color: var(--color-dark-purple);
+  font-size: 13px;
   font-weight: 600;
-  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 12px 15px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: rgba(255,255,255,0.05);
+  color: var(--text-primary);
   font-size: 14px;
-  font-family: inherit;
-  transition: border-color 0.3s ease;
-  box-sizing: border-box;
+  outline: none;
+  transition: all 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-  outline: none;
-  border-color: var(--color-regular-purple);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
 }
 
-.form-group textarea {
-  resize: vertical;
-  min-height: 80px;
-}
-
+/* Modal Actions */
 .modal-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
-  margin-top: 25px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .btn-cancel {
-  background: #f0f0f0;
-  color: var(--color-dark-purple);
+  background: rgba(255,255,255,0.08);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
 }
 
 .btn-cancel:hover {
-  background: #e0e0e0;
+  background: rgba(255,255,255,0.15);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .lab-tests-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
+/* ===============================
+   NO DATA
+================================ */
 
-  .lab-tests-table {
-    overflow-x: scroll;
-  }
-
-  .modal-content {
-    width: 95%;
-    margin: 20px;
-  }
+.no-data {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
 }

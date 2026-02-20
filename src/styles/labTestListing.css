@@ -1,151 +1,143 @@
-@import './variables.css';
+/* ==============================
+   Lab Test Listing - Same as Doctor Listing
+============================== */
 
-/* Lab Test Listing Page Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
+
 .lab-test-listing-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  min-height: 80vh;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.lab-test-header {
-  text-align: center;
-  margin-bottom: 40px;
-  padding: 30px 0;
-}
-
+/* Header */
 .lab-test-header h1 {
-  color: var(--color-dark-purple);
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 600;
+  color: #008080; /* primary teal */
+  margin-bottom: 5px;
 }
 
 .lab-test-header p {
-  color: var(--color-muted-purple);
-  font-size: 1.1rem;
+  font-size: 14px;
+  color: #555; /* muted text */
+  margin: 0;
 }
 
-/* Search Section */
+/* Search Bar */
 .search-section {
-  margin-bottom: 30px;
   display: flex;
   justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .search-input {
   width: 100%;
-  max-width: 600px;
-  padding: 15px 20px;
-  border: 2px solid var(--color-muted-purple);
-  border-radius: 10px;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.3s ease;
+  max-width: 500px;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #d3d3d3;
+  transition: 0.3s;
 }
 
 .search-input:focus {
-  border-color: var(--color-regular-purple);
+  outline: none;
+  border-color: #008080;
+  box-shadow: 0 4px 12px rgba(0,128,128,0.2);
 }
 
-/* Lab Tests Grid */
+/* Loading & No Results */
+.loading-container,
+.no-results {
+  text-align: center;
+  padding: 30px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Lab Tests Grid (like Doctors Grid) */
 .lab-tests-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
+/* Lab Test Card (like Doctor Card) */
 .lab-test-card {
-  background: white;
-  border-radius: 15px;
-  padding: 25px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #f0f0f0;
+  background: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 20px;
+  flex: 1 1 280px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .lab-test-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
 }
 
+/* Test Info */
 .test-info h3 {
-  color: var(--color-dark-purple);
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  font-weight: 600;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #008080;
 }
 
-.test-description {
-  color: var(--color-muted-purple);
-  font-size: 0.95rem;
-  margin-bottom: 15px;
-  line-height: 1.5;
+.test-info p {
+  margin: 4px 0;
+  font-size: 13px;
+  color: #555;
 }
 
 .test-price {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  justify-content: space-between;
+  font-weight: 500;
+  margin-top: 8px;
+  color: #008080;
 }
 
-.price-label {
-  color: var(--color-muted-purple);
-  font-size: 0.9rem;
-}
-
-.price-value {
-  color: var(--color-dark-purple);
-  font-size: 1.3rem;
-  font-weight: 700;
-}
-
+/* Book Button (like Doctor Buttons) */
 .book-test-btn {
-  width: 100%;
-  padding: 12px 20px;
-  background: linear-gradient(135deg, var(--color-regular-purple), var(--color-dark-purple));
-  color: white;
+  margin-top: 10px;
+  padding: 10px 0;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
+  border-radius: 6px;
+  background: #008080;
+  color: #fff;
+  font-weight: 500;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: 0.3s;
 }
 
 .book-test-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(104, 80, 123, 0.4);
-}
-
-/* Loading and Error States */
-.loading-container,
-.no-results {
-  text-align: center;
-  padding: 60px 20px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.loading-container p,
-.no-results p {
-  font-size: 18px;
-  color: var(--color-muted-purple);
+  background: #006666;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .lab-tests-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .lab-test-header h1 {
-    font-size: 2rem;
+  .lab-test-card {
+    width: 100%;
   }
 }

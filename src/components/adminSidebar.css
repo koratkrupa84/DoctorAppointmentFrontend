@@ -1,73 +1,95 @@
-@import '../styles/variables.css';
+@import url('../styles/variables.css');
+
+/* =====================================
+   SIDEBAR CONTAINER
+===================================== */
 
 .admin-sidebar {
-  width: 230px;
-  height: 100vh;
-  background: linear-gradient(180deg, var(--color-regular-purple), var(--color-dark-purple));
-  color: #fff;
-  padding: 25px 20px;
+  width: 240px;
+  min-height: 100vh;
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  left: 0;
-  top: 0;
-  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
 }
 
+/* =====================================
+   LOGO
+===================================== */
+
 .admin-sidebar .logo {
-  font-size: 22px;
-  font-weight: 700;
   text-align: center;
-  margin-bottom: 40px;
-  color: #fff;
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
+
+/* =====================================
+   MENU LIST
+===================================== */
 
 .admin-sidebar .menu {
   list-style: none;
   padding: 0;
   margin: 0;
-  flex-grow: 1;
+  flex: 1;
 }
 
 .admin-sidebar .menu li {
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
-.admin-sidebar .menu li a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
+/* =====================================
+   MENU LINKS
+===================================== */
+
+.admin-sidebar .menu a {
   display: block;
-  padding: 12px 16px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--color-text-light);
+  padding: 10px 14px;
+  border-radius: 6px;
+  transition: 0.3s ease;
+  font-size: 14px;
 }
 
-.admin-sidebar .menu li a:hover,
-.admin-sidebar .menu li a.active {
-  background-color: var(--color-soft-purple);
-  color: var(--color-nearly-black);
-  transform: translateX(5px);
+.admin-sidebar .menu a:hover {
+  background-color: var(--color-primary-dark);
 }
 
-/* Logout button style */
-.admin-sidebar .logout-btn {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  border: none;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* =====================================
+   LOGOUT BUTTON
+===================================== */
+
+.logout-btn {
   width: 100%;
-  text-align: center;
+  padding: 10px 14px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s ease;
 }
 
-.admin-sidebar .logout-btn:hover {
-  background: #fff;
-  color: var(--color-dark-purple);
-  transform: translateX(5px);
+.logout-btn:hover {
+  opacity: 0.9;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    width: 200px;
+    padding: 20px 15px;
+  }
+
+  .admin-sidebar .logo {
+    font-size: 18px;
+  }
 }

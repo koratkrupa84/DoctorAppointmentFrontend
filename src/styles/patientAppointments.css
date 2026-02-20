@@ -1,103 +1,127 @@
-@import './variables.css';
+/* ==============================
+   Patient Appointments - Teal Medical Theme
+============================== */
 
-/* -------- Page Layout -------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 .dashboard-page {
   display: flex;
+  font-family: 'Poppins', sans-serif;
+  background: var(--color-bg-secondary);
   min-height: 100vh;
-  background-color: var(--color-lightest);
-  font-family: var(--font-main);
 }
 
-/* Sidebar ke baad content */
+/* Appointments Container */
 .appointments-container {
-  margin-left: 260px; /* Sidebar space */
-  padding: 40px;
-  width: calc(100% - 260px);
-  box-sizing: border-box;
+  flex: 1;
+  padding: 30px;
+  background: var(--color-bg-main);
+  margin: 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
 }
 
-/* Title */
 .appointments-container h2 {
-  font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 25px;
-  color: var(--color-dark-purple);
+  color: var(--color-primary);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
-/* Table box */
+/* Table Style */
 .appointments-table {
   width: 100%;
   border-collapse: collapse;
-  background: #fff;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-
-  margin-top: 20px;
-  margin-bottom: 30px;
+  font-size: 14px;
 }
 
-/* Table cells */
 .appointments-table th,
 .appointments-table td {
-  padding: 15px 20px;
+  padding: 12px 15px;
   text-align: left;
-  font-size: 15px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .appointments-table th {
-  background: var(--color-regular-purple);
-  color: #fff;
-  font-weight: 600;
+  background-color: var(--color-primary-light);
+  color: var(--color-text-light);
+  font-weight: 500;
 }
 
-.appointments-table tr:hover {
-  background-color: #f9f5fc;
+.appointments-table tbody tr:hover {
+  background-color: var(--color-accent-hover);
+  transition: 0.2s;
 }
 
-/* -------- Status Colors -------- */
-.status.confirmed {
-  color: green;
-  font-weight: 600;
-}
-
-.status.pending {
-  color: orange;
-  font-weight: 600;
-}
-
-.status.cancelled {
-  color: red;
-  font-weight: 600;
-}
-
-/* -------- No Data -------- */
-.no-appointments {
-  font-size: 16px;
-  color: var(--color-deep-purple);
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-/* Loading and Error States */
-.loading-container,
-.error-container {
+/* Status Styling */
+.status {
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: var(--color-text-light);
+  font-weight: 500;
   text-align: center;
-  padding: 40px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  width: 100px;
 }
 
-.loading-container p {
-  font-size: 16px;
-  color: var(--color-muted-purple);
+.status-pending {
+  background-color: #f0ad4e; /* amber */
 }
 
+.status-confirmed {
+  background-color: #28a745; /* green */
+}
+
+.status-cancelled {
+  background-color: #dc3545; /* red */
+}
+
+/* No appointments & loading */
+.no-appointments,
+.loading-container p,
 .error-container p {
-  color: #dc3545;
+  text-align: center;
   font-size: 16px;
+  color: var(--color-text-muted);
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .appointments-container {
+    margin: 10px;
+    padding: 20px;
+  }
+
+  .appointments-table th,
+  .appointments-table td {
+    padding: 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointments-table thead {
+    display: none;
+  }
+
+  .appointments-table tr {
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .appointments-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border: none;
+  }
+
+  .appointments-table td::before {
+    content: attr(data-label);
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
 }
