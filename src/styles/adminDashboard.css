@@ -9,9 +9,10 @@
   background: var(--color-bg-secondary);
 }
 
-.dashboard-content {
+.dashboard-body {
   flex: 1;
   padding: 36px;
+  margin-left: 250px;
 }
 
 /* ================= HEADER ================= */

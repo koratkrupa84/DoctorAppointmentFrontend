@@ -7,11 +7,12 @@
 .admin-sidebar {
   width: 240px;
   min-height: 100vh;
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
+  background-color: #e74c3c; /* Red theme instead of var(--color-primary) */
+  color: white;
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* =====================================
@@ -20,7 +21,7 @@
 
 .admin-sidebar .logo {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 30px; /* Restored original margin */
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -48,7 +49,7 @@
 .admin-sidebar .menu a {
   display: block;
   text-decoration: none;
-  color: var(--color-text-light);
+  color: white; /* Changed from var(--color-text-light) */
   padding: 10px 14px;
   border-radius: 6px;
   transition: 0.3s ease;
@@ -56,7 +57,7 @@
 }
 
 .admin-sidebar .menu a:hover {
-  background-color: var(--color-primary-dark);
+  background-color: #c0392b; /* Darker red for hover instead of var(--color-primary-dark) */
 }
 
 /* =====================================
@@ -66,7 +67,7 @@
 .logout-btn {
   width: 100%;
   padding: 10px 14px;
-  background-color: #dc3545;
+  background-color: var(--color-primary-dark);
   color: white;
   border: none;
   border-radius: 6px;

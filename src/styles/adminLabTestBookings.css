@@ -1,0 +1,504 @@
+/* Dashboard Layout */
+.dashboard-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.dashboard-layout {
+  display: flex;
+  min-height: calc(100vh - 70px); /* Subtract header height */
+}
+
+/* ================================
+   Patient Search Dropdown - Teal Theme
+================================ */
+.patient-search-container {
+  position: relative;
+  width: 100%;
+}
+
+.patient-search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg-main);
+  color: var(--color-text-primary);
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.patient-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.15);
+}
+
+.patient-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-bg-main);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  margin-top: 4px;
+}
+
+.patient-option {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.patient-option:last-child {
+  border-bottom: none;
+}
+
+.patient-option:hover {
+  background: var(--color-primary-light);
+  color: var(--color-text-light);
+}
+
+.patient-option-name {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+
+.patient-option-email {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.patient-option.no-results {
+  color: var(--color-text-muted);
+  font-style: italic;
+  text-align: center;
+  padding: 16px;
+}
+
+.custom-patient-note {
+  display: block;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(0, 128, 128, 0.1);
+  border-left: 3px solid var(--color-primary);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* Sidebar Styles */
+.admin-sidebar {
+  width: 250px;
+  background: #2c3e50;
+  color: white;
+  padding: 0;
+  position: fixed;
+  height: calc(100vh - 70px); /* Subtract header height */
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.admin-sidebar .logo {
+  padding: 1.5rem 1rem;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 1px solid #34495e;
+  background: #34495e;
+}
+
+.admin-sidebar .menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-sidebar .menu li {
+  border-bottom: 1px solid #34495e;
+}
+
+.admin-sidebar .menu li a,
+.admin-sidebar .menu li button {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.admin-sidebar .menu li a:hover,
+.admin-sidebar .menu li button:hover {
+  background: #34495e;
+  padding-left: 2rem;
+}
+
+.admin-sidebar .logout-btn {
+  background: #e74c3c !important;
+  margin-top: 1rem;
+}
+
+.admin-sidebar .logout-btn:hover {
+  background: #c0392b !important;
+}
+
+/* Content Area */
+.dashboard-content {
+ display: flex;
+  padding: 30px;
+  min-height: 100vh;
+  margin: 0 0 0 250px;
+  gap: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f8;
+}
+
+/* Message Styles */
+.message {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.message.info {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+.message button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.message button:hover {
+  opacity: 1;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+  color: #666;
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+/* Lab Test Bookings Specific Styles */
+.admin-lab-test-bookings {
+  background: var(--color-bg-card);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================
+   Booking Search - Teal Medical UI
+================================ */
+
+.booking-search-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+.booking-search-container .search-input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 750px; /* thoda wide kyunki placeholder bada hai */
+}
+
+/* ===== Input ===== */
+.booking-search-input {
+  width: 100%;
+  padding: 14px 50px 14px 50px;
+  border-radius: 40px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-main);
+  color: var(--color-text-primary);
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.booking-search-input::placeholder {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+/* Focus Glow */
+.booking-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.18);
+}
+
+/* ===== Search Icon ===== */
+.booking-search-container .search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-primary);
+  pointer-events: none;
+}
+
+/* ===== Clear Button ===== */
+.booking-search-container .clear-btn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-accent);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  transition: all 0.3s ease;
+}
+
+.booking-search-container .clear-btn:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.bookings-header h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Table Styles */
+.bookings-table {
+  overflow-x: auto;
+}
+
+.bookings-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bookings-table th {
+  background:var(--color-primary);
+  color: var(--color-text-light);
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bookings-table-head {
+  color: var(--color-text-light) !important;
+}
+
+.bookings-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: top;
+}
+
+.bookings-table tr:hover {
+  background: #f8f9fa;
+}
+
+.bookings-table tr:last-child td {
+  border-bottom: none;
+}
+
+.no-bookings {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-style: italic;
+  background: #f8f9fa;
+}
+
+/* Status Select */
+.status-select {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.status-select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover:not(:disabled) {
+  background: #c0392b;
+  transform: translateY(-1px);
+}
+
+.delete-btn:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Patient Info Styles */
+.patient-info {
+  line-height: 1.4;
+}
+
+.patient-info strong {
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+.patient-info small {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+/* Test Info Styles */
+.test-info {
+  line-height: 1.4;
+}
+
+.test-info strong {
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+.test-info small {
+  color: #666;
+  font-size: 0.85rem;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .admin-sidebar {
+    width: 200px;
+  }
+  
+  .dashboard-content {
+    margin-left: 200px;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+  
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  .dashboard-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  
+  .bookings-table {
+    font-size: 0.9rem;
+  }
+  
+  .bookings-table th,
+  .bookings-table td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-content {
+    padding: 0.5rem;
+  }
+  
+  .admin-lab-test-bookings {
+    padding: 1rem;
+    border-radius: 0;
+  }
+  
+  .bookings-table {
+    font-size: 0.8rem;
+  }
+  
+  .bookings-table th,
+  .bookings-table td {
+    padding: 0.5rem 0.25rem;
+  }
+}
+

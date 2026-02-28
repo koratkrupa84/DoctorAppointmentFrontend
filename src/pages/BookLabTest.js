@@ -4,18 +4,22 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { API } from "../config/api";
 import "../styles/bookLabTest.css";
+import AlphanumericCaptcha from "../components/Captcha";
 
 const BookLabTest = () => {
   const { testId } = useParams();
   const navigate = useNavigate();
   const [test, setTest] = useState(null);
+  const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     date: "",
     time: "",
-    notes: ""
+    notes: "",
+    referenceDoctor: ""
   });
   const [message, setMessage] = useState("");
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
 
   const fetchTestDetails = useCallback(async () => {
     try {
@@ -37,6 +41,17 @@ const BookLabTest = () => {
     }
   }, [testId]);
 
+  const fetchDoctors = useCallback(async () => {
+    try {
+      const res = await fetch(API.ALL_DOCTORS);
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Failed to load doctors");
+      setDoctors(data.doctors || []);
+    } catch (error) {
+      console.error("Error fetching doctors:", error);
+    }
+  }, []);
+
   useEffect(() => {
     // Check if user is logged in
     const token = localStorage.getItem("token");
@@ -56,7 +71,8 @@ const BookLabTest = () => {
     }
 
     fetchTestDetails();
-  }, [fetchTestDetails]);
+    fetchDoctors();
+  }, [fetchTestDetails, fetchDoctors]);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -65,8 +81,18 @@ const BookLabTest = () => {
     });
   };
 
+  const handleCaptchaValidate = (isValid) => {
+    setIsCaptchaValid(isValid);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate captcha
+    if (!isCaptchaValid) {
+      setMessage("❌ Incorrect captcha! Please try again.");
+      return;
+    }
 
     if (!formData.date || !formData.time) {
       setMessage("Please select date and time");
@@ -84,7 +110,8 @@ const BookLabTest = () => {
         test_id: testId,
         date: formData.date,
         time: formData.time,
-        notes: formData.notes
+        notes: formData.notes,
+        referenceDoctor: formData.referenceDoctor
       };
 
       const res = await fetch(API.BOOK_LAB_TEST, {
@@ -225,6 +252,23 @@ const BookLabTest = () => {
               </select>
             </div>
 
+            {/* Reference Doctor */}
+            <div className="form-group">
+              <label>Reference Doctor</label>
+              <select
+                name="referenceDoctor"
+                value={formData.referenceDoctor}
+                onChange={handleInputChange}
+              >
+                <option value="">Select reference doctor (optional)</option>
+                {doctors.map((doctor) => (
+                  <option key={doctor.id || doctor._id} value={doctor.name}>
+                    Dr. {doctor.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             {/* Notes */}
             <div className="form-group">
               <label>Additional Notes</label>
@@ -234,6 +278,13 @@ const BookLabTest = () => {
                 onChange={handleInputChange}
                 rows="4"
                 placeholder="Any special instructions or notes..."
+              />
+            </div>
+
+            {/* Captcha */}
+            <div className="form-group">
+              <AlphanumericCaptcha 
+                onCaptchaChange={handleCaptchaValidate}
               />
             </div>
 

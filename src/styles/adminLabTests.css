@@ -67,6 +67,7 @@
   letter-spacing: 0.8px;
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border-color);
+  background-color: var(--color-primary-light);
 }
 
 .lab-tests-table td {
@@ -109,38 +110,35 @@
 
 /* Primary */
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: #fff;
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(37, 99, 235, 0.7);
 }
 
 /* Edit */
 .btn-edit {
-  background: rgba(255,255,255,0.08);
-  color: var(--text-primary);
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
   margin-right: 10px;
+  margin-bottom: 10px;
   border: 1px solid var(--border-color);
 }
 
 .btn-edit:hover {
-  background: rgba(255,255,255,0.15);
+ transform: translateY(-3px);
 }
 
 /* Delete */
 .btn-delete {
-  background: linear-gradient(135deg, var(--danger), #991b1b);
-  color: #fff;
-  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+
 }
 
 .btn-delete:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(239, 68, 68, 0.7);
 }
 
 .btn:disabled {
@@ -164,7 +162,6 @@
 }
 
 .modal-content {
-  background: var(--bg-card);
   width: 500px;
   max-width: 95%;
   padding: 30px;
@@ -183,7 +180,7 @@
 .modal-header h3 {
   font-size: 20px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--color-primary-dark);
 }
 
 .modal-close {
@@ -255,4 +252,80 @@
   text-align: center;
   padding: 40px;
   color: var(--text-secondary);
+}
+
+/* ================================
+   Booking Search Bar - Teal Theme
+================================ */
+
+.booking-search-container {
+      width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.booking-search-container .search-input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* ===== Input Field ===== */
+.booking-search-input {
+  width: 100%;
+  padding: 12px 45px 12px 45px;
+  border-radius: 30px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-main);
+  color: var(--color-text-primary);
+  font-size: 15px;
+  transition: 0.3s ease;
+  box-shadow: var(--shadow-soft);
+  margin: 20px 0;
+}
+
+.booking-search-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Focus Effect */
+.booking-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.15);
+}
+
+/* ===== Search Icon ===== */
+.booking-search-container .search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-primary);
+  pointer-events: none;
+}
+
+/* ===== Clear Button ===== */
+.booking-search-container .clear-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-accent);
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  transition: 0.3s ease;
+}
+
+.booking-search-container .clear-btn:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-50%) scale(1.05);
 }

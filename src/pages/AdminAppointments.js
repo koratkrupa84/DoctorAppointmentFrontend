@@ -28,6 +28,7 @@ const AdminAppointments = () => {
   const [patientSearch, setPatientSearch] = useState('');
   const [showPatientDropdown, setShowPatientDropdown] = useState(false);
   const [selectedPatientName, setSelectedPatientName] = useState('');
+  const [appointmentSearch, setAppointmentSearch] = useState('');
 
   const token = localStorage.getItem('token');
 
@@ -203,9 +204,22 @@ const AdminAppointments = () => {
     setShowPatientDropdown(false);
   };
 
+  const handleAppointmentSearch = (e) => {
+    const value = e.target.value;
+    setAppointmentSearch(value);
+  };
+
   const filteredUsers = users.filter(user => 
     user.name.toLowerCase().includes(patientSearch.toLowerCase()) ||
     user.email.toLowerCase().includes(patientSearch.toLowerCase())
+  );
+
+  const filteredAppointments = appointments.filter(appointment => 
+    (appointment.patient && appointment.patient.name && appointment.patient.name.toLowerCase().includes(appointmentSearch.toLowerCase())) ||
+    (appointment.doctor && appointment.doctor.name && appointment.doctor.name.toLowerCase().includes(appointmentSearch.toLowerCase())) ||
+    (appointment.date && appointment.date.includes(appointmentSearch)) ||
+    (appointment.time && appointment.time.includes(appointmentSearch)) ||
+    (appointment.status && appointment.status.toLowerCase().includes(appointmentSearch.toLowerCase()))
   );
 
   const handleBookAppointment = async (e) => {
@@ -277,7 +291,7 @@ const AdminAppointments = () => {
   return (
     <div className="dashboard-page">
       <AdminSidebar />
-      <div className="dashboard-content">
+      <div className="dashboard-body">
         {message && (
           <div className={`message ${message.includes('successfully') ? 'success' : message.includes('Error') ? 'error' : 'info'}`}>
             {message}
@@ -306,6 +320,44 @@ const AdminAppointments = () => {
             </button>
             </div>
           </div>
+          
+          {/* Appointment Search Bar */}
+          <div className="appointment-search-container">
+            <div className="search-input-wrapper">
+              <svg 
+                className="search-icon" 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-2.35"></path>
+              </svg>
+              <input
+                type="text"
+                value={appointmentSearch}
+                onChange={handleAppointmentSearch}
+                placeholder="Search appointments by patient, doctor, date, time, or status..."
+                className="appointment-search-input"
+              />
+              {appointmentSearch && (
+                <button 
+                  className="clear-btn" 
+                  onClick={() => setAppointmentSearch('')}
+                  title="Clear search"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              )}
+            </div>
+          </div>
+
           <div className="appointments-table">
             <table>
               <thead>
@@ -319,7 +371,7 @@ const AdminAppointments = () => {
                 </tr>
               </thead>
               <tbody>
-                {appointments && appointments.length > 0 ? appointments.map(appointment => (
+                {filteredAppointments && filteredAppointments.length > 0 ? filteredAppointments.map(appointment => (
                   <tr key={appointment.id}>
                     <td>{appointment.date}</td>
                     <td>{appointment.time}</td>
@@ -378,7 +430,9 @@ const AdminAppointments = () => {
                   </tr>
                 )) : (
                   <tr>
-                    <td colSpan="6" className="no-appointments">No appointments found</td>
+                    <td colSpan="6" className="no-appointments">
+                      {appointmentSearch ? `No appointments found matching "${appointmentSearch}"` : 'No appointments found'}
+                    </td>
                   </tr>
                 )}
               </tbody>

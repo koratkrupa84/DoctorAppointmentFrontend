@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/doctorDetailsForm.css";
 import "../styles/variables.css";
 import { API } from "../config/api";
+import AlphanumericCaptcha from "../components/Captcha";
 
 const DoctorDetailsForm = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const DoctorDetailsForm = () => {
     fees: "",
     profile_pic: ""
   });
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -26,8 +28,18 @@ const DoctorDetailsForm = () => {
     });
   };
 
+  const handleCaptchaValidate = (isValid) => {
+    setIsCaptchaValid(isValid);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate captcha
+    if (!isCaptchaValid) {
+      alert("❌ Incorrect captcha! Please try again.");
+      return;
+    }
 
     const data = new FormData();
     for (let key in formData) {
@@ -81,6 +93,13 @@ const DoctorDetailsForm = () => {
         <div className="form-group">
           <label>Profile Picture</label>
           <input type="file" name="profile_pic" accept="image/*" onChange={handleChange} />
+        </div>
+
+        {/* Captcha */}
+        <div className="form-group">
+          <AlphanumericCaptcha 
+            onCaptchaChange={handleCaptchaValidate}
+          />
         </div>
 
         <button type="submit" className="submit-button">Submit</button>

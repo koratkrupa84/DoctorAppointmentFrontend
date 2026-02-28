@@ -56,7 +56,6 @@
 .patient-card {
   flex: 1;
   min-width: 200px;
-  background: linear-gradient(135deg, #009688, #26a69a);
   color: #fff;
   padding: 25px 20px;
   border-radius: 16px;

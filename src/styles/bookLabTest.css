@@ -90,7 +90,7 @@
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 6px;
-  color: var(--color-text-primary);
+  color: var(--color-primary-dark);
 }
 
 .form-group input,

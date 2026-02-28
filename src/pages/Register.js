@@ -3,6 +3,7 @@ import "../styles/register.css";
 import "../styles/variables.css";
 import {useNavigate, Link} from "react-router-dom";
 import { API } from "../config/api";
+import AlphanumericCaptcha from "../components/Captcha";
 
 const Register = () => {
 
@@ -20,6 +21,9 @@ const Register = () => {
     role: "",
   });
 
+  const [captchaValue, setCaptchaValue] = useState("");
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -27,8 +31,18 @@ const Register = () => {
     });
   };
 
+  const handleCaptchaValidate = (isValid) => {
+    setIsCaptchaValid(isValid);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate captcha
+    if (!isCaptchaValid) {
+      alert("❌ Incorrect captcha! Please try again.");
+      return;
+    }
 
     if (formData.password !== formData.confirmPassword) {
       alert("❌ Passwords do not match!");
@@ -128,6 +142,12 @@ const Register = () => {
             <option value="Patient">Patient</option>
             <option value="Doctor">Doctor</option>
           </select>
+        </div>
+
+        <div className="form-group">
+          <AlphanumericCaptcha 
+            onCaptchaChange={handleCaptchaValidate}
+          />
         </div>
 
         <button type="submit" className="register-button">

@@ -14,6 +14,7 @@ const AdminLabTests = () => {
     updating: false,
     deleting: null
   });
+  const [labTestSearch, setLabTestSearch] = useState('');
   const [formData, setFormData] = useState({
     test_name: '',
     description: '',
@@ -43,9 +44,21 @@ const AdminLabTests = () => {
       }
     } catch (error) {
       setMessage('Error connecting to server');
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }, [token]);
+
+  const handleLabTestSearch = (e) => {
+    const value = e.target.value;
+    setLabTestSearch(value);
+  };
+
+  const filteredLabTests = labTests.filter(test => 
+    test.test_name.toLowerCase().includes(labTestSearch.toLowerCase()) ||
+    test.description.toLowerCase().includes(labTestSearch.toLowerCase()) ||
+    test.price.toString().includes(labTestSearch.toLowerCase())
+  );
 
   const handleInputChange = (e) => {
     setFormData({
@@ -184,7 +197,7 @@ const AdminLabTests = () => {
       <AdminSidebar />
       <div className="dashboard-content">
         {message && (
-          <div className="message">
+          <div className={`message ${message.includes('successfully') ? 'success' : message.includes('Error') ? 'error' : 'info'}`}>
             {message}
             <button onClick={() => setMessage('')}>×</button>
           </div>
@@ -195,6 +208,7 @@ const AdminLabTests = () => {
         <div className="admin-lab-tests">
           <div className="lab-tests-header">
             <h2>Lab Tests Management</h2>
+
             <button 
               onClick={() => setShowAddModal(true)}
               className="btn btn-primary"
@@ -202,8 +216,43 @@ const AdminLabTests = () => {
               + Add Lab Test
             </button>
           </div>
-
-          {labTests && labTests.length > 0 ? (
+        {/* Lab Test Search Bar */}
+        <div className="booking-search-container">
+          <div className="search-input-wrapper">
+            <svg 
+              className="search-icon" 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-2.35"></path>
+            </svg>
+            <input
+              type="text"
+              value={labTestSearch}
+              onChange={handleLabTestSearch}
+              placeholder="Search lab tests by name, description, or price..."
+              className="booking-search-input"
+            />
+            {labTestSearch && (
+              <button 
+                className="clear-btn" 
+                onClick={() => setLabTestSearch('')}
+                title="Clear search"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            )}
+          </div>
+        </div>
+          {filteredLabTests && filteredLabTests.length > 0 ? (
             <div className="lab-tests-table">
               <table>
                 <thead>

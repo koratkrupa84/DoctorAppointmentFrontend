@@ -91,10 +91,10 @@ const PatientProfile = () => {
   };
 
   return (
-    <div className="dashboard-page">
-      <div className="profile-container">
+    <div className="dashboardPage">
+      <div className="profileContainer">
         <PatientSidebar />
-        <div className="profile-card">
+        <div className="profileCard">
           {loading ? (
             <>
               <h2>Loading...</h2>

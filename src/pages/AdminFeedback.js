@@ -176,7 +176,7 @@ const AdminFeedback = () => {
   return (
     <div className="dashboard-page">
       <AdminSidebar />
-      <div className="dashboard-content">
+      <div className="dashboard-body">
         {message && (
           <div className={`message ${message.includes('successfully') ? 'success' : message.includes('Error') ? 'error' : 'info'}`}>
             {message}
@@ -254,7 +254,7 @@ const AdminFeedback = () => {
                     <select
                       value={feedback.status}
                       onChange={(e) => updateFeedbackStatus(feedback.id, e.target.value)}
-                      className="status-select"
+                      className="feedback-status-select"
                       disabled={actionLoading.updating === feedback.id}
                       style={{ backgroundColor: getStatusColor(feedback.status), color: '#fff' }}
                     >

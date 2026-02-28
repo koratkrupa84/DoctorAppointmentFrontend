@@ -16,7 +16,7 @@
   flex: 1;
   padding: 30px;
   background: var(--color-bg-main);
-  margin: 20px;
+  margin-left: 250px;
   border-radius: 12px;
   box-shadow: var(--shadow-soft);
 }
@@ -46,6 +46,7 @@
   background-color: var(--color-primary-light);
   color: var(--color-text-light);
   font-weight: 500;
+  width: 200px;
 }
 
 .appointments-table tbody tr:hover {
@@ -73,6 +74,10 @@
 
 .status-cancelled {
   background-color: #dc3545; /* red */
+}
+
+.status-expired {
+  background-color: #6c757d; /* gray */
 }
 
 /* No appointments & loading */

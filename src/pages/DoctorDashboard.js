@@ -47,7 +47,7 @@ const DoctorDashboard = () => {
   return (
     <div className="dashboard-page">
       <Sidebar />
-      <div className="dashboard-content">
+      <div className="dashboard-container">
         <div className="dashboard-header">
           {loading ? (
             <>

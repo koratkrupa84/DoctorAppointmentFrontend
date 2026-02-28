@@ -50,6 +50,7 @@ export const API = {
   ADMIN_DELETE_LAB_TEST: `${BASE_URL}/admin/lab-tests`,
   // Admin Lab Test Bookings APIs
   ADMIN_LAB_TEST_BOOKINGS: `${BASE_URL}/admin/lab-test-bookings`,
+  ADMIN_CREATE_LAB_TEST_BOOKING: `${BASE_URL}/admin/lab-test-bookings`,
   ADMIN_UPDATE_LAB_TEST_BOOKING_STATUS: `${BASE_URL}/admin/lab-test-bookings`,
   ADMIN_DELETE_LAB_TEST_BOOKING: `${BASE_URL}/admin/lab-test-bookings`,
   // Consultation APIs

@@ -3,18 +3,18 @@
    (Color theme kept same)
 ========================== */
 
-.profile-container {
+.profileContainer {
   display: flex;
   padding: 30px;
-  margin-left: 250px; /* space for sidebar */
   min-height: 100vh;
   gap: 30px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #f4f6f8;
+  margin-left: 250px;
 }
 
 @media (max-width: 1024px) {
-  .profile-container {
+  .profileContainer {
     flex-direction: column;
     margin-left: 0;
     padding: 20px;
@@ -24,10 +24,10 @@
 /* ------------------------------
    Left Card - Profile Info
 ------------------------------ */
-.profile-card {
+.profileCard {
   width: 300px;
   background: #fff; /* keep original white */
-  padding: 30px 20px 20px 20px;
+  padding: 120px 20px 20px 20px;
   border-radius: 20px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   text-align: center;
@@ -35,8 +35,7 @@
 }
 
 /* Circular Avatar */
-.profile-card::before {
-  content: attr(data-initials);
+.profileCard::before {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,12 +50,12 @@
 }
 
 /* Name & Role */
-.profile-card h2 {
+.profileCard h2 {
   font-size: 24px;
   margin-bottom: 5px;
 }
 
-.profile-card .role-text {
+.profileCard .role-text {
   font-size: 14px;
   color: #666;
   margin-bottom: 20px;

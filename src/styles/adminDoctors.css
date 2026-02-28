@@ -60,27 +60,79 @@
   background: var(--color-primary-dark);
 }
 
-/* ================= SEARCH BAR ================= */
+/* ================================
+   Doctor Search Bar - Teal Theme
+================================ */
 
-.doctor-search {
-  margin-bottom: 20px;
+.doctor-search-container {
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  margin: 20px 0;
 }
 
-.doctor-search input {
-  width: 260px;
-  padding: 10px 14px;
-  border-radius: 8px;
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* ===== Input Field ===== */
+.doctor-search-input {
+  width: 100%;
+  padding: 12px 45px 12px 45px;
+  border-radius: 30px;
   border: 1px solid var(--color-border);
-  font-size: 14px;
-  transition: 0.2s ease;
+  background: var(--color-bg-main);
+  color: var(--color-text-primary);
+  font-size: 15px;
+  transition: 0.3s ease;
+  box-shadow: var(--shadow-soft);
 }
 
-.doctor-search input:focus {
+.doctor-search-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Focus Effect */
+.doctor-search-input:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.15);
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.15);
+}
+
+/* ===== Search Icon ===== */
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-primary);
+  pointer-events: none;
+}
+
+/* ===== Clear Button ===== */
+.clear-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-accent);
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  transition: 0.3s ease;
+}
+
+.clear-btn:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-50%) scale(1.05);
 }
 
 /* ================= TABLE CONTAINER ================= */
@@ -101,10 +153,6 @@ table {
 
 /* Table Header */
 
-thead {
-  background: var(--color-bg-card);
-}
-
 th {
   padding: 18px 16px;
   text-align: left;
@@ -112,7 +160,7 @@ th {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
   border-bottom: 1px solid var(--color-border);
 }
 

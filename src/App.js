@@ -26,7 +26,6 @@ import AdminLabTestBookings from "./pages/AdminLabTestBookings";
 import PatientConsultation from "./pages/PatientConsultation";
 import DoctorConsultation from "./pages/DoctorConsultation";
 import AIAdvisor from "./pages/AIAdvisor";
-import AdminConsultations from "./pages/AdminConsultations";
 import PatientFeedback from "./pages/PatientFeedback";
 import ForgotPassword from "./pages/ForgotPassword";
 import LabTestListing from "./pages/LabTestListing";
@@ -66,7 +65,6 @@ function App() {
         <Route path="/admin/feedback" element={<AdminFeedback/>} />
         <Route path="/admin/lab-tests" element={<AdminLabTests/>} />
         <Route path="/admin/lab-test-bookings" element={<AdminLabTestBookings/>} />
-        <Route path="/admin/consultations" element={<AdminConsultations/>} />
         <Route path="/ai-advisor" element={<AIAdvisor/>} />
 
       </Routes>

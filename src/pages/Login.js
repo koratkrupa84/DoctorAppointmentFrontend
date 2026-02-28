@@ -4,17 +4,30 @@ import "../styles/login.css"; // your existing CSS
 import "../styles/variables.css";
 import { API } from "../config/api";
 import { useNavigate } from "react-router-dom";
+import AlphanumericCaptcha from "../components/Captcha";
 
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
+  const [captchaValue, setCaptchaValue] = useState("");
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleCaptchaValidate = (isValid) => {
+    setIsCaptchaValid(isValid);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate captcha
+    if (!isCaptchaValid) {
+      alert("❌ Incorrect captcha! Please try again.");
+      return;
+    }
 
     try {
       const res = await fetch(API.LOGIN, {
@@ -66,6 +79,12 @@ const Login = () => {
             name="password"
             onChange={handleChange}
             required
+          />
+        </div>
+
+        <div className="form-group">
+          <AlphanumericCaptcha 
+            onCaptchaChange={handleCaptchaValidate}
           />
         </div>
 

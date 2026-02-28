@@ -2,20 +2,32 @@ import React, { useState } from "react";
 import "../styles/login.css";
 import { API } from "../config/api";
 import { useNavigate } from "react-router-dom";
+import AlphanumericCaptcha from "../components/Captcha";
 
 const ForgotPassword = () => {
   const [form, setForm] = useState({ email: "", newPassword: "", confirmPassword: "" });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleCaptchaValidate = (isValid) => {
+    setIsCaptchaValid(isValid);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
+
+    // Validate captcha
+    if (!isCaptchaValid) {
+      setMessage("❌ Incorrect captcha! Please try again.");
+      return;
+    }
 
     if (!form.email || !form.newPassword || !form.confirmPassword) {
       setMessage("Please fill all fields");
@@ -103,6 +115,12 @@ const ForgotPassword = () => {
             value={form.confirmPassword}
             onChange={handleChange}
             required
+          />
+        </div>
+
+        <div className="form-group">
+          <AlphanumericCaptcha 
+            onCaptchaChange={handleCaptchaValidate}
           />
         </div>
 

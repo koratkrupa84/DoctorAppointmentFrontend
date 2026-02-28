@@ -4,6 +4,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { API } from "../config/api";
 import "../styles/bookAppointment.css";
+import AlphanumericCaptcha from "../components/Captcha";
 
 const BookAppointment = () => {
   const { doctorId } = useParams();
@@ -17,6 +18,7 @@ const BookAppointment = () => {
     notes: ""
   });
   const [message, setMessage] = useState("");
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
 
   const BACKEND_URL = "http://localhost:5000";
 
@@ -68,8 +70,18 @@ const BookAppointment = () => {
     });
   };
 
+  const handleCaptchaValidate = (isValid) => {
+    setIsCaptchaValid(isValid);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate captcha
+    if (!isCaptchaValid) {
+      setMessage("❌ Incorrect captcha! Please try again.");
+      return;
+    }
 
     if (!formData.date || !formData.time) {
       setMessage("Please select date and time");
@@ -273,6 +285,13 @@ const BookAppointment = () => {
                   onChange={handleInputChange}
                   placeholder="Any additional information..."
                   rows="3"
+                />
+              </div>
+
+              {/* Captcha */}
+              <div className="form-group">
+                <AlphanumericCaptcha 
+                  onCaptchaChange={handleCaptchaValidate}
                 />
               </div>
 

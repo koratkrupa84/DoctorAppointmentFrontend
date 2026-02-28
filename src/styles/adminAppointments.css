@@ -18,11 +18,83 @@
 
 .admin-appointments {
   background: var(--color-bg-card);
-  padding: 25px;
-  border-radius: 15px;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   Appointment Search - Teal Medical UI
+========================================= */
+
+.appointment-search-container {
+  width: 100%;
+  margin: 25px 0;
+}
+
+.appointment-search-container .search-input-wrapper {
+  position: relative;
+  max-width: 650px;
+}
+
+/* ===== Input ===== */
+.appointment-search-input {
+  width: 100%;
+  padding: 13px 48px;
+  border-radius: 35px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-main);
+  color: var(--color-text-primary);
+  font-size: 14px;
+  transition: all 0.3s ease;
   box-shadow: var(--shadow-soft);
 }
 
+.appointment-search-input::placeholder {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+/* Focus Glow Effect */
+.appointment-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.18);
+}
+
+/* ===== Search Icon ===== */
+.appointment-search-container .search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-primary);
+  pointer-events: none;
+}
+
+/* ===== Clear Button ===== */
+.appointment-search-container .clear-btn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-accent);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  transition: all 0.3s ease;
+}
+
+.appointment-search-container .clear-btn:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-50%) scale(1.08);
+}
 /* ===============================
    Header Section
 ================================= */

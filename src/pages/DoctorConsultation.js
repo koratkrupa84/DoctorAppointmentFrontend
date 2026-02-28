@@ -112,7 +112,7 @@ const DoctorConsultation = () => {
   return (
     <div className="dashboard-page">
       <Sidebar />
-      <div className="consultation-container">
+      <div className="consultation">
         <div className="consultation-sidebar">
           <div className="consultation-header">
             <h2>Consultations</h2>
