@@ -71,7 +71,7 @@
 }
 
 /* ===== Login Button ===== */
-.login-btn {
+.header-login-btn {
   background-color: var(--color-accent);
   color: var(--color-text-primary);
   padding: 8px 16px;
@@ -81,7 +81,7 @@
   transition: 0.3s ease;
 }
 
-.login-btn:hover {
+.header-login-btn:hover {
   background-color: var(--color-accent-hover);
   transform: translateY(-2px);
 }
@@ -113,7 +113,7 @@
     font-size: 18px;
   }
 
-  .login-btn {
+  .header-login-btn {
     padding: 6px 12px;
     font-size: 14px;
   }

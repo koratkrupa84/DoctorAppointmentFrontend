@@ -1,36 +1,36 @@
-  /* ================================
-    Theme Variables - Teal Medical UI
-    ================================ */
+/* ================================
+   Theme Variables - Teal Modern UI
+   ================================ */
 
-  :root {
+:root {
 
-    /* ===== Primary Colors ===== */
-    --color-primary: #008080;        /* Teal / Forest Green */
-    --color-primary-dark: #006666;   /* Slightly darker shade for hover */
-    --color-primary-light: #33A3A3;  /* Light variation */
+  /* ===== Primary Colors ===== */
+  --color-primary: #2C6975;        /* Dark Teal */
+  --color-primary-dark: #1F4F57;   /* Hover Dark */
+  --color-primary-light: #68B2A0;  /* Soft Teal */
 
-    /* ===== Background Colors ===== */
-    --color-bg-main: #FFFFFF;        /* Main body background */
-    --color-bg-secondary: #D3D3D3;   /* Secondary background */
-    --color-bg-card: #F8F8F8;        /* Optional soft card background */
+  /* ===== Background Colors ===== */
+  --color-bg-main: #F4F9F8;        /* Soft Mint Background */
+  --color-bg-secondary: #E0ECDE;   /* Light Sage */
+  --color-bg-card: #FFFFFF;        /* Clean Card */
 
-    /* ===== Accent Colors ===== */
-    --color-accent: #00FFFF;         /* Light Blue / Cyan */
-    --color-accent-hover: #00E5E5;   /* Accent hover */
+  /* ===== Accent Colors ===== */
+  --color-accent: #68B2A0;         /* Medium Teal */
+  --color-accent-hover: #3E7F8C;   /* Accent Hover */
 
-    /* ===== Text Colors ===== */
-    --color-text-primary: #000000;   /* Black text */
-    --color-text-light: #FFFFFF;     /* White text */
-    --color-text-muted: #555555;     /* Soft text */
+  /* ===== Text Colors ===== */
+  --color-text-primary: #173F46;   /* Deep Teal Text */
+  --color-text-light: #FFFFFF;     /* White Text */
+  --color-text-muted: #2C6975;     /* Soft Teal Text */
 
-    /* ===== Border & Shadow ===== */
-    --color-border: #D3D3D3;
-    --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.08);
+  /* ===== Border & Shadow ===== */
+  --color-border: #CDE0C9;
+  --shadow-soft: 0 4px 10px rgba(44, 105, 117, 0.08);
 
-    /* ===== Button Colors ===== */
-    --btn-primary-bg: var(--color-primary);
-    --btn-primary-text: #FFFFFF;
-    --btn-accent-bg: var(--color-accent);
-    --btn-accent-text: #000000;
+  /* ===== Button Colors ===== */
+  --btn-primary-bg: var(--color-primary);
+  --btn-primary-text: #FFFFFF;
+  --btn-accent-bg: var(--color-accent);
+  --btn-accent-text: #FFFFFF;
 
-  }
+}

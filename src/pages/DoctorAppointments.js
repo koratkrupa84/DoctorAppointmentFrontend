@@ -55,7 +55,7 @@ const DoctorAppointments = () => {
             <p>No appointments found.</p>
           </div>
         ) : (
-          <table className="appointments-table">
+          <table className="doctor-appointments-table">
             <thead>
               <tr>
                 <th>ID</th>
@@ -72,7 +72,7 @@ const DoctorAppointments = () => {
                   <td>{appt.patient}</td>
                   <td>{appt.date}</td>
                   <td>{appt.time}</td>
-                  <td className={`status ${appt.status.toLowerCase()}`}>
+                  <td className={`doctor-appointments-table-status ${appt.status.toLowerCase()}`}>
                     {appt.status}
                   </td>
                 </tr>

@@ -5,9 +5,11 @@ import '../styles/adminPatients.css';
 
 const AdminPatients = () => {
   const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [showAddUserModal, setShowAddUserModal] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const [actionLoading, setActionLoading] = useState({
     creating: false,
     deleting: null
@@ -40,6 +42,7 @@ const AdminPatients = () => {
       const data = await response.json();
       if (response.ok) {
         setUsers(data.users || []);
+        setFilteredUsers(data.users || []);
       } else {
         setMessage(data.message || 'Error fetching patients');
       }
@@ -48,6 +51,15 @@ const AdminPatients = () => {
     }
     setLoading(false);
   }, [token]);
+
+  useEffect(() => {
+    const filtered = users.filter(user =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (user.phone && user.phone.includes(searchTerm))
+    );
+    setFilteredUsers(filtered);
+  }, [users, searchTerm]);
 
   const deleteUser = async (userId) => {
     if (window.confirm('Are you sure you want to delete this patient? This will also delete all their appointments.')) {
@@ -84,7 +96,7 @@ const AdminPatients = () => {
 
   const handleAddUser = async (e) => {
     e.preventDefault();
-    
+
     if (!formData.name || !formData.email || !formData.password) {
       setMessage('Name, email, and password are required');
       return;
@@ -100,7 +112,7 @@ const AdminPatients = () => {
         },
         body: JSON.stringify(formData)
       });
-      
+
       const data = await response.json();
       if (response.ok) {
         setMessage('Patient created successfully');
@@ -141,12 +153,36 @@ const AdminPatients = () => {
         <div className="admin-users">
           <div className="users-header">
             <h2>All Patients</h2>
-            <button 
+            <button
               onClick={() => setShowAddUserModal(true)}
               className="btn btn-primary"
             >
               + Add Patient
             </button>
+          </div>
+
+          <div className="patient-search-container">
+            <div className="search-input-wrapper">
+              <svg
+                className="search-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-2.35"></path>
+              </svg>
+              <input
+                type="text"
+                placeholder="Search patients by name, email, or phone..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="patient-search-input"
+              />
+            </div>
           </div>
 
           {/* Add Patient Modal */}
@@ -155,7 +191,7 @@ const AdminPatients = () => {
               <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-header">
                   <h3>Add New Patient</h3>
-                  <button 
+                  <button
                     className="close-btn"
                     onClick={() => setShowAddUserModal(false)}
                   >
@@ -241,8 +277,8 @@ const AdminPatients = () => {
                     >
                       Cancel
                     </button>
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       className="btn btn-primary"
                       disabled={actionLoading.creating}
                     >
@@ -268,7 +304,7 @@ const AdminPatients = () => {
                 </tr>
               </thead>
               <tbody>
-                {users && users.length > 0 ? users.map(user => (
+                {filteredUsers && filteredUsers.length > 0 ? filteredUsers.map(user => (
                   <tr key={user.id}>
                     <td>{user.name}</td>
                     <td>{user.email}</td>

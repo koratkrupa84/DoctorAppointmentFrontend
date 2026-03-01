@@ -39,28 +39,15 @@ const Home = () => {
   };
 
   const handleBookNow = (service) => {
-    // Check if user is logged in and is a patient
-    const token = localStorage.getItem("token");
-    const role = localStorage.getItem("role");
-
-    if (!token) {
-      alert("Please login to book appointments");
-      navigate("/login");
-      return;
-    }
-
-    if (role !== "Patient") {
-      alert("Only patients can book appointments");
-      return;
-    }
-
-    // Navigate to doctors listing for the specific service
+    console.log("Service clicked:", service);
+    
+    // Try direct navigation
     if (service === "appointment") {
-      navigate("/doctors");
+      window.location.href = "/doctors";
     } else if (service === "consultation") {
-      navigate("/patient/consultation");
+      window.location.href = "/patient/consultation";
     } else if (service === "labtest") {
-      navigate("/lab-tests");
+      window.location.href = "/lab-tests";
     }
   };
 
@@ -107,25 +94,37 @@ const Home = () => {
 
       {/* Quick Actions */}
       <div className="home-cards">
-        <div className="card">
+        <div className="card" onClick={() => window.location.href = "/doctors"}>
           <div className="card-icon">🏥</div>
           <p>Book Appointment</p>
-          <button className="book-btn" onClick={() => handleBookNow("appointment")}>Book Now</button>
+          <button className="book-btn" onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = "/doctors";
+          }}>Book Now</button>
         </div>
 
-        <div className="card">
+        <div className="card" onClick={() => window.location.href = "/patient/consultation"}>
           <div className="card-icon">💻</div>
           <p>Online Doctor Consultation</p>
-          <button className="book-btn" onClick={() => handleBookNow("consultation")}>Book Now</button>
+          <button className="book-btn" onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = "/patient/consultation";
+          }}>Book Now</button>
         </div>
 
-        <div className="card">
+        <div className="card" onClick={() => window.location.href = "/lab-tests"}>
           <div className="card-icon">🔬</div>
           <p>Book Lab Test</p>
-          <button className="book-btn" onClick={() => handleBookNow("labtest")}>Book Now</button>
+          <button className="book-btn" onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = "/lab-tests";
+          }}>Book Now</button>
         </div>
 
-        <div className="card ai-card" onClick={() => navigate("/ai-advisor")}>
+        <div className="card ai-card" onClick={() => window.location.href = "/ai-advisor"}>
           <div className="ai-icon">🤖</div>
           <p>AI Health Advisor</p>
           <button className="book-btn">Chat Now</button>

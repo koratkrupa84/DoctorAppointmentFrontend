@@ -62,50 +62,130 @@ const Login = () => {
       alert("Something went wrong");
     }
   };
+  const [activeTab, setActiveTab] = useState("login");
+  
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Login</h2>
-
-        <div className="form-group">
-          <label>Email</label>
-          <input type="email" name="email" onChange={handleChange} required />
-        </div>
-
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <AlphanumericCaptcha 
-            onCaptchaChange={handleCaptchaValidate}
-          />
-        </div>
-
-        <div className="form-links">
-          <button
-            type="button"
-            className="forgot-password"
-            onClick={() => navigate("/forgot-password")}
-          >
-            Forgot password?
+    <div className="login-card">
+      {/* LEFT: MEDCARE HOSPITAL branding */}
+      <div className="brand-panel">
+        {/* Back Button */}
+        <div className="back-button-container">
+          <button className="back-button" onClick={() => navigate("/")}>
+            <i className="fas fa-arrow-left"></i>
           </button>
         </div>
-
-        <button type="submit" className="login-button">
-          Login
-        </button> 
-
-        <div className="register-link">
-          Don’t have an account? <a href="/register">Register</a>
+        
+        <div className="brand-title">
+          <i className="fas fa-hospital"></i> MedCare
         </div>
-      </form>
+        <div className="brand-tagline">Your trusted partner for hospital appointments and healthcare management</div>
+
+        <ul className="feature-list">
+          <li><i className="fas fa-user-md"></i> Expert doctors & specialists</li>
+          <li><i className="fas fa-calendar-plus"></i> Easy appointment booking</li>
+          <li><i className="fas fa-file-medical"></i> Digital health records</li>
+          <li><i className="fas fa-clock"></i> 24/7 emergency support</li>
+        </ul>
+
+        <div className="appointment-badge">
+          <i className="fas fa-video"></i> Video consultation available
+        </div>
+
+        <div className="brand-footer-note">
+          —  Your health, our priority
+        </div>
+      </div>
+
+      {/* RIGHT: LOGIN FORM */}
+      <div className="form-panel">
+        <div className="form-header">
+          <h2>Welcome Back</h2>
+          <p>Login to book appointments & manage your health</p>
+        </div>
+
+        {/* login/signup toggle */}
+        <div className="switch-buttons">
+          <span className={`login-active ${activeTab === "login" ? "active" : ""}`} onClick={() => setActiveTab("login")}>Login</span>
+          <a href="#" className="signup-link" onClick={(e) => { e.preventDefault(); setActiveTab("signup"); }}>Sign Up</a>
+        </div>
+
+        {activeTab === "login" && (
+          <form className="login-form" onSubmit={handleSubmit}>
+            {/* email field */}
+            <div className="input-group">
+              <label>Email Address</label>
+              <div className="input-wrapper">
+                <i className="far fa-envelope"></i>
+                <input 
+                  type="email" 
+                  name="email" 
+                  placeholder="Enter your email"
+                  onChange={handleChange} 
+                  required 
+                />
+              </div>
+            </div>
+
+            {/* password field */}
+            <div className="input-group">
+              <label>Password</label>
+              <div className="input-wrapper">
+                <i className="fas fa-lock"></i>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter your password"
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            {/* forgot password */}
+            <div className="forgot-row">
+              <a href="#" className="forgot-link" onClick={(e) => { e.preventDefault(); navigate("/forgot-password"); }}>Forgot Password?</a>
+            </div>
+
+            {/* captcha */}
+            <div className="captcha-container">
+              <AlphanumericCaptcha 
+                onCaptchaChange={handleCaptchaValidate}
+              />
+            </div>
+
+            {/* login button */}
+            <button type="submit" className="login-btn">
+              <i className="fas fa-sign-in-alt"></i> Login to MedCare
+            </button>
+
+            {/* OR divider */}
+            <div className="or-divider">
+              <span className="or-divider-line"></span>
+              <span>Or continue with</span>
+              <span className="or-divider-line"></span>
+            </div>
+
+            {/* social icons */}
+            <div className="social-icons">
+              <a href="#" className="social-icon"><i className="fab fa-google"></i></a>
+              <a href="#" className="social-icon"><i className="fab fa-facebook-f"></i></a>
+              <a href="#" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
+            </div>
+
+            {/* new patient? */}
+            <div className="new-patient">
+              <span>New patient? </span>
+              <a href="/register">Register here</a>
+            </div>
+          </form>
+        )}
+
+        {activeTab === "signup" && (
+          <div className="signup-form">
+            <p>Sign up form will be implemented here</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

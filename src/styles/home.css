@@ -431,6 +431,7 @@ h2::after {
   height: 100%;
   background: rgba(255,255,255,0.2);
   transition: left 0.5s ease;
+  pointer-events: none;
 }
 
 .card .book-btn:hover::before {
@@ -442,36 +443,6 @@ h2::after {
   box-shadow: 0 8px 20px rgba(0,128,128,0.25);
 }
 
-/* AI Card Special Styling */
-.ai-card {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  color: var(--color-text-light);
-  border: 1px solid var(--color-primary);
-  transform: scale(1.03);
-}
-
-.ai-card:hover {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 25px 50px rgba(0,128,128,0.25);
-}
-
-.ai-card .book-btn {
-  background: var(--color-text-light);
-  color: var(--color-primary);
-  border: 2px solid var(--color-text-light);
-}
-
-.ai-card .book-btn:hover {
-  background: transparent;
-  color: var(--color-text-light);
-  border-color: var(--color-text-light);
-}
-
-.ai-icon {
-  font-size: 56px;
-  margin-bottom: 18px;
-  animation: pulse 2s infinite;
-}
 
 @keyframes pulse {
   0% {
@@ -608,6 +579,7 @@ h2::after {
   height: 100%;
   background: rgba(255,255,255,0.2);
   transition: left 0.5s ease;
+  pointer-events: none;
 }
 
 .speciality .book-btn:hover::before {
@@ -739,6 +711,7 @@ h2::after {
   height: 100%;
   background: rgba(255,255,255,0.2);
   transition: left 0.5s ease;
+  pointer-events: none;
 }
 
 .symptom .book-btn:hover::before {
@@ -860,11 +833,11 @@ h2::after {
 ================================= */
 
 .stats-section {
-  padding: 80px 20px;
+  padding: 20px;
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
   color: var(--color-text-light);
   text-align: center;
-  height: 90vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -955,10 +928,10 @@ h2::after {
 ================================= */
 
 .testimonials-section {
-  padding: 80px 20px;
+  padding: 20px;
   background: linear-gradient(135deg, rgba(245,247,250,0.9) 0%, rgba(195,207,226,0.9) 100%);
   margin: 80px 0;
-  height: 90vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;

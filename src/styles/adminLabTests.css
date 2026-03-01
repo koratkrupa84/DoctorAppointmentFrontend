@@ -41,54 +41,57 @@
    TABLE
 ================================ */
 
-.lab-tests-table {
+.admin-lab-tests-table {
   overflow-x: auto;
-  border-radius: 16px;
-  background: var(--bg-glass);
-  border: 1px solid var(--border-color);
-  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  background: var(--color-bg-card);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.lab-tests-table table {
+.admin-lab-tests-table table {
   width: 100%;
   border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.lab-tests-table thead {
+.admin-lab-tests-table thead {
   background: rgba(255, 255, 255, 0.04);
 }
 
-.lab-tests-table th {
-  padding: 18px;
+.admin-lab-tests-table th {
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  padding: 1rem;
   text-align: left;
-  font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: var(--text-secondary);
-  border-bottom: 1px solid var(--border-color);
-  background-color: var(--color-primary-light);
+  letter-spacing: 0.5px;
 }
 
-.lab-tests-table td {
-  padding: 18px;
-  font-size: 14px;
-  color: var(--text-primary);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  vertical-align: middle;
+.admin-lab-tests-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: top;
+  color: var(--color-text-primary);
 }
 
-.lab-tests-table tbody tr {
+.admin-lab-tests-table tbody tr {
   transition: all 0.3s ease;
 }
 
-.lab-tests-table tbody tr:hover {
-  background: rgba(255, 255, 255, 0.05);
-  transform: scale(1.01);
+.admin-lab-tests-table tr:hover {
+  background: #f8f9fa;
+}
+
+.admin-lab-tests-table tr:last-child td {
+  border-bottom: none;
 }
 
 /* Price Highlight */
-.lab-tests-table td:nth-child(3) {
+.admin-lab-tests-table td:nth-child(3) {
   font-weight: 600;
   color: var(--success);
   font-size: 15px;

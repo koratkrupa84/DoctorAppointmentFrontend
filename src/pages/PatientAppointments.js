@@ -52,7 +52,7 @@ const PatientAppointments = () => {
         ) : appointments.length === 0 ? (
           <p className="no-appointments">No appointments found.</p>
         ) : (
-          <table className="appointments-table">
+          <table className="patient-appointments-table">
             <thead>
               <tr>
                 <th>Specialization</th>

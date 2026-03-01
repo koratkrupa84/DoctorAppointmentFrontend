@@ -1,96 +1,65 @@
-@import url('../styles/variables.css');
-
-/* =====================================
-   SIDEBAR CONTAINER
-===================================== */
-
+/* Sidebar Styles */
 .admin-sidebar {
-  width: 240px;
-  min-height: 100vh;
-  background-color: #e74c3c; /* Red theme instead of var(--color-primary) */
+  width: 250px;
+  background: var(--color-primary);
   color: white;
-  padding: 30px 20px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  position: fixed;
+  height: calc(100vh - 70px); /* Subtract header height */
+  overflow-y: auto;
+  z-index: 100;
+  height: 100vh;
 }
-
-/* =====================================
-   LOGO
-===================================== */
 
 .admin-sidebar .logo {
+  padding: 1.5rem 1rem;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
   text-align: center;
-  margin-bottom: 30px; /* Restored original margin */
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  border-bottom: 1px solid var(--color-primary);
+  background: var(--color-primary);
 }
-
-/* =====================================
-   MENU LIST
-===================================== */
 
 .admin-sidebar .menu {
   list-style: none;
   padding: 0;
   margin: 0;
-  flex: 1;
 }
 
 .admin-sidebar .menu li {
-  margin-bottom: 12px;
+  border-bottom: 1px solid var(--color-primary);
 }
 
-/* =====================================
-   MENU LINKS
-===================================== */
-
-.admin-sidebar .menu a {
+.admin-sidebar .menu li a,
+.admin-sidebar .menu li button {
   display: block;
-  text-decoration: none;
-  color: white; /* Changed from var(--color-text-light) */
-  padding: 10px 14px;
-  border-radius: 6px;
-  transition: 0.3s ease;
-  font-size: 14px;
-}
-
-.admin-sidebar .menu a:hover {
-  background-color: #c0392b; /* Darker red for hover instead of var(--color-primary-dark) */
-}
-
-/* =====================================
-   LOGOUT BUTTON
-===================================== */
-
-.logout-btn {
-  width: 100%;
-  padding: 10px 14px;
-  background-color: var(--color-primary-dark);
+  padding: 1rem 1.5rem;
   color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
   border: none;
-  border-radius: 6px;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-size: 0.95rem;
   cursor: pointer;
-  font-size: 14px;
-  transition: 0.3s ease;
 }
 
-.logout-btn:hover {
-  opacity: 0.9;
+.admin-sidebar .menu li a:hover,
+.admin-sidebar .menu li button:hover {
+  background: var(--color-primary);
+  padding-left: 2rem;
 }
 
-/* =====================================
-   RESPONSIVE
-===================================== */
+.admin-sidebar .logout-btn {
+  background: var(--color-primary-dark) !important;
+  width: 90% !important;
+  text-align: center !important; 
+  margin-left: 10px !important;
+  margin-bottom: 1rem;
+}
 
-@media (max-width: 768px) {
-  .admin-sidebar {
-    width: 200px;
-    padding: 20px 15px;
-  }
-
-  .admin-sidebar .logo {
-    font-size: 18px;
-  }
+.admin-sidebar .logout-btn:hover {
+  background: var(--color-primary-dark) !important;
 }

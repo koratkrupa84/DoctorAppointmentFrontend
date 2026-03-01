@@ -28,7 +28,7 @@ const Header = () => {
       </nav>
 
       <div className="header-actions">
-        <Link to="/login" className="login-btn">Login / Signup</Link>
+        <Link to="/login" className="header-login-btn">Login / Signup</Link>
 
         {role && (
           <FaUserCircle

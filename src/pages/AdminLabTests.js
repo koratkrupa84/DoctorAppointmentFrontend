@@ -253,7 +253,7 @@ const AdminLabTests = () => {
           </div>
         </div>
           {filteredLabTests && filteredLabTests.length > 0 ? (
-            <div className="lab-tests-table">
+            <div className="admin-lab-tests-table">
               <table>
                 <thead>
                   <tr>

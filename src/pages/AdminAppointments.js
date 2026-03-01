@@ -293,7 +293,7 @@ const AdminAppointments = () => {
       <AdminSidebar />
       <div className="dashboard-body">
         {message && (
-          <div className={`message ${message.includes('successfully') ? 'success' : message.includes('Error') ? 'error' : 'info'}`}>
+          <div className={`admin-message ${message.includes('successfully') ? 'success' : message.includes('Error') ? 'error' : 'info'}`}>
             {message}
             <button onClick={() => setMessage('')}>×</button>
           </div>
@@ -358,7 +358,7 @@ const AdminAppointments = () => {
             </div>
           </div>
 
-          <div className="appointments-table">
+          <div className="admin-appointments-table">
             <table>
               <thead>
                 <tr>

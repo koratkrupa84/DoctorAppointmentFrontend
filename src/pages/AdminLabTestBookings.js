@@ -201,8 +201,18 @@ const AdminLabTestBookings = () => {
     setShowPatientDropdown(true);
     
     // If user is typing manually, allow custom name
-    if (value && !patients.find(p => p.name.toLowerCase() === value.toLowerCase())) {
-      setSelectedPatientName(value);
+    if (value) {
+      const existingPatient = patients.find(p => p.name.toLowerCase() === value.toLowerCase());
+      if (!existingPatient) {
+        setSelectedPatientName(value);
+        setFormData(prev => ({ ...prev, patient_id: '' }));
+      } else {
+        // If exact match found, update the form data
+        setSelectedPatientName(existingPatient.name);
+        setFormData(prev => ({ ...prev, patient_id: existingPatient.id }));
+      }
+    } else {
+      setSelectedPatientName('');
       setFormData(prev => ({ ...prev, patient_id: '' }));
     }
   };
@@ -380,7 +390,7 @@ const AdminLabTestBookings = () => {
         <AdminSidebar />
         <div className="dashboard-content">
           {message && (
-            <div className={`message ${message.includes('successfully') ? 'success' : message.includes('Error') ? 'error' : 'info'}`}>
+            <div className={`lab-test-message ${message.includes('successfully') ? 'success' : message.includes('Error') ? 'error' : 'info'}`}>
               {message}
               <button onClick={() => setMessage('')}>×</button>
             </div>
@@ -436,9 +446,9 @@ const AdminLabTestBookings = () => {
               </div>
             </div>
 
-            <div className="bookings-table">
+            <div className="admin-bookings-table">
               <table>
-                <thead className="bookings-table-head">
+                <thead className="admin-bookings-table-head">
                   <tr>
                     <th>Date</th>
                     <th>Time</th>
@@ -467,12 +477,6 @@ const AdminLabTestBookings = () => {
                       <td>
                         <div className="test-info">
                           <strong>{booking.test.test_name}</strong>
-                          {booking.test.description && (
-                            <>
-                              <br />
-                              <small>{booking.test.description}</small>
-                            </>
-                          )}
                         </div>
                       </td>
                       <td>₹{booking.test.price}</td>

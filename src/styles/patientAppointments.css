@@ -29,29 +29,42 @@
 }
 
 /* Table Style */
-.appointments-table {
+.patient-appointments-table {
   width: 100%;
   border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.patient-appointments-table th {
+  background: #008080;
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+.patient-appointments-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+  color: #333;
   font-size: 14px;
 }
 
-.appointments-table th,
-.appointments-table td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid var(--color-border);
+.patient-appointments-table tr:hover {
+  background: #f8f9fa;
 }
 
-.appointments-table th {
-  background-color: var(--color-primary-light);
-  color: var(--color-text-light);
-  font-weight: 500;
-  width: 200px;
-}
-
-.appointments-table tbody tr:hover {
-  background-color: var(--color-accent-hover);
-  transition: 0.2s;
+.patient-appointments-table tr:last-child td {
+  border-bottom: none;
 }
 
 /* Status Styling */
@@ -97,19 +110,19 @@
     padding: 20px;
   }
 
-  .appointments-table th,
-  .appointments-table td {
+  .patient-appointments-table th,
+  .patient-appointments-table td {
     padding: 10px;
     font-size: 13px;
   }
 }
 
 @media (max-width: 480px) {
-  .appointments-table thead {
+  .patient-appointments-table thead {
     display: none;
   }
 
-  .appointments-table tr {
+  .patient-appointments-table tr {
     display: block;
     margin-bottom: 15px;
     border: 1px solid var(--color-border);
@@ -117,14 +130,14 @@
     padding: 10px;
   }
 
-  .appointments-table td {
+  .patient-appointments-table td {
     display: flex;
     justify-content: space-between;
     padding: 6px 0;
     border: none;
   }
 
-  .appointments-table td::before {
+  .patient-appointments-table td::before {
     content: attr(data-label);
     font-weight: 500;
     color: var(--color-text-muted);
