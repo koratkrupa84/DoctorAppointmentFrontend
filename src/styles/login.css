@@ -1,3 +1,4 @@
+
 /* ==============================
    Login Page - Exact Match Design
 ============================== */
@@ -30,17 +31,55 @@ body {
     flex-direction: row;
     overflow: hidden;
     transform: scale(0.85);
+    /* align-items: center !important; */
+    justify-content: center !important;
 }
 
 /* left panel – hospital brand section */
 .brand-panel {
     background-color: var(--color-primary);
     color: var(--color-text-light);
-    padding: 2rem 2rem;
+    padding: 2.5rem 2rem;
     flex: 1 1 42%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+}
+
+.brand-panel .switch-buttons {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    justify-content: center;
+    background: rgba(255,255,255,0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.brand-panel .switch-buttons .signup-link {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-weight: 450;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    opacity: 0.8;
+}
+
+.brand-panel .switch-buttons .signup-link:hover {
+    color: var(--color-accent);
+    opacity: 1;
+}
+
+.brand-panel .switch-buttons .login-active.active {
+    color: var(--color-accent);
+    border-bottom: 3px solid var(--color-accent);
+    padding-bottom: 6px;
+    cursor: pointer;
+    font-weight: 600;
 }
 
 .back-button-container {
@@ -222,6 +261,91 @@ body {
 .input-wrapper input::placeholder {
     color: #b5cfcb;
     font-weight: 300;
+}
+
+/* Gender Radio Buttons Styles */
+.gender-options {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-card);
+}
+
+.radio-label:hover {
+    color: var(--color-primary);
+    border-color: var(--color-accent);
+    background: rgba(104, 178, 160, 0.05);
+}
+
+.radio-label input[type="radio"] {
+    margin: 0;
+    accent-color: var(--color-accent);
+}
+
+.radio-label input[type="radio"]:checked + .radio-text {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.radio-label:has(input[type="radio"]:checked) {
+    border-color: var(--color-accent);
+    background: rgba(104, 178, 160, 0.1);
+}
+
+.radio-text {
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+/* File Input Styles */
+.file-input {
+    display: none;
+}
+
+.file-input-label {
+    background: var(--color-bg-secondary);
+    border: 2px solid var(--color-border);
+    border-radius: 60px;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 0.5rem;
+    flex: 1;
+}
+
+.file-input-label:hover {
+    border-color: var(--color-accent);
+    background: rgba(104, 178, 160, 0.05);
+    color: var(--color-accent);
+}
+
+.file-input-label i {
+    font-size: 1rem;
+}
+
+.input-wrapper:has(.file-input):hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px rgba(104, 178, 160, 0.15);
 }
 
 .forgot-row {
