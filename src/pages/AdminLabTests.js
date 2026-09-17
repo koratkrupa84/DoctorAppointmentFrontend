@@ -25,6 +25,7 @@ const AdminLabTests = () => {
 
   useEffect(() => {
     fetchLabTests();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchLabTests = useCallback(async () => {

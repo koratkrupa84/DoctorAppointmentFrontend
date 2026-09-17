@@ -25,6 +25,7 @@ const PatientFeedback = () => {
       setOpenFormOnly(true);
     }
     fetchFeedbacks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchFeedbacks = async () => {

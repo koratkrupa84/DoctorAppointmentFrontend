@@ -186,7 +186,7 @@ const AdminLabTestBookings = () => {
     fetchLabTests();
     fetchPatients();
     fetchDoctors();
-  }, [fetchBookings, fetchLabTests, fetchPatients, fetchDoctors]);
+  }, [token, fetchBookings, fetchLabTests, fetchPatients, fetchDoctors]);
 
   const handleBookingSearch = (e) => {
     const value = e.target.value;

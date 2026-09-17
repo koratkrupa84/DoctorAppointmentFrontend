@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import '../styles/captcha.css';
 
 const AlphanumericCaptcha = ({ onCaptchaChange, reset }) => {
@@ -92,24 +92,24 @@ const AlphanumericCaptcha = ({ onCaptchaChange, reset }) => {
     ctx.strokeRect(0, 0, width, height);
   };
 
-  const generateNewCaptcha = () => {
+  const generateNewCaptcha = useCallback(() => {
     const newText = generateRandomString();
     setCaptchaText(newText);
     setUserInput('');
     drawCaptcha(newText);
     onCaptchaChange(false);
     setError('');
-  };
+  }, [onCaptchaChange]);
 
   useEffect(() => {
     generateNewCaptcha();
-  }, []);
+  }, [generateNewCaptcha]);
 
   useEffect(() => {
     if (reset) {
       generateNewCaptcha();
     }
-  }, [reset]);
+  }, [reset, generateNewCaptcha]);
 
   const handleInputChange = (e) => {
     const value = e.target.value;

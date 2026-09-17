@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/login.css";
 import "../styles/variables.css";
-import {useNavigate, Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import { API } from "../config/api";
 import AlphanumericCaptcha from "../components/Captcha";
 
@@ -21,7 +21,6 @@ const Register = () => {
     role: "",
   });
 
-  const [captchaValue, setCaptchaValue] = useState("");
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
 
   const handleChange = (e) => {
@@ -318,9 +317,9 @@ const Register = () => {
 
           {/* social icons */}
           <div className="social-icons">
-            <a href="#" className="social-icon"><i className="fab fa-google"></i></a>
-            <a href="#" className="social-icon"><i className="fab fa-facebook-f"></i></a>
-            <a href="#" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
+            <a href="https://accounts.google.com" target="_blank" rel="noopener noreferrer" className="social-icon"><i className="fab fa-google"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon"><i className="fab fa-facebook-f"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
           </div>
 
           {/* existing user? */}

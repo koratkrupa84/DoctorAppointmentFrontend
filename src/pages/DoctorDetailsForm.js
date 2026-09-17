@@ -220,7 +220,7 @@ const DoctorDetailsForm = () => {
           {/* help section */}
           <div className="new-patient">
             <span>Contact support at </span>
-            <a href="#">help@medcare.com</a>
+            <a href="mailto:help@medcare.com">help@medcare.com</a>
           </div>
         </form>
       </div>

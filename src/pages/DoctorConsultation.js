@@ -15,6 +15,7 @@ const DoctorConsultation = () => {
 
   useEffect(() => {
     fetchConsultations();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const DoctorConsultation = () => {
       }, 3000);
       return () => clearInterval(interval);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedConsultation]);
 
   useEffect(() => {

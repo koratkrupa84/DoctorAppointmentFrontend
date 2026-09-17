@@ -38,19 +38,6 @@ const Home = () => {
     navigate(`/doctors?search=${encodeURIComponent(symptom)}`);
   };
 
-  const handleBookNow = (service) => {
-    console.log("Service clicked:", service);
-    
-    // Try direct navigation
-    if (service === "appointment") {
-      window.location.href = "/doctors";
-    } else if (service === "consultation") {
-      window.location.href = "/patient/consultation";
-    } else if (service === "labtest") {
-      window.location.href = "/lab-tests";
-    }
-  };
-
   return (
     <>
       <Header />

@@ -36,6 +36,7 @@ const AdminAppointments = () => {
     fetchAppointments();
     fetchUsers();
     fetchDoctors();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Close dropdown when clicking outside
@@ -273,18 +274,6 @@ const AdminAppointments = () => {
       setMessage('Error connecting to server');
     } finally {
       setActionLoading(prev => ({ ...prev, creating: false }));
-    }
-  };
-
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'Pending': return '#ffc107';
-      case 'Confirmed': return '#28a745';
-      case 'Completed': return '#007bff';
-      case 'Cancelled': return '#dc3545';
-      case 'Rejected': return '#6c757d';
-      case 'Expired': return '#6c757d';
-      default: return '#6c757d';
     }
   };
 

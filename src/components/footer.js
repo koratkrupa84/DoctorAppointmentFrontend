@@ -80,19 +80,19 @@ const Footer = () => {
             <div className="footer-social">
               <div className="social-title">Follow Us</div>
               <div className="social-icons">
-                <a href="#" className="social-icon facebook">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon facebook">
                   <i className="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" className="social-icon twitter">
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
                   <i className="fab fa-twitter"></i>
                 </a>
-                <a href="#" className="social-icon instagram">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon instagram">
                   <i className="fab fa-instagram"></i>
                 </a>
-                <a href="#" className="social-icon linkedin">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
                   <i className="fab fa-linkedin-in"></i>
                 </a>
-                <a href="#" className="social-icon youtube">
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-icon youtube">
                   <i className="fab fa-youtube"></i>
                 </a>
               </div>
@@ -101,14 +101,14 @@ const Footer = () => {
             <div className="footer-apps">
               <div className="app-title">Download App</div>
               <div className="app-buttons">
-                <a href="#" className="app-button">
+                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="app-button">
                   <i className="fab fa-apple"></i>
                   <div className="app-text">
                     <span className="app-small">Download on</span>
                     <span className="app-large">App Store</span>
                   </div>
                 </a>
-                <a href="#" className="app-button">
+                <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" className="app-button">
                   <i className="fab fa-google-play"></i>
                   <div className="app-text">
                     <span className="app-small">Get it on</span>

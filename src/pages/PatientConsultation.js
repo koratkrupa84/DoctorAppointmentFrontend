@@ -9,7 +9,7 @@ const PatientConsultation = () => {
   const [selectedConsultation, setSelectedConsultation] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // eslint-disable-line no-unused-vars
   const [sending, setSending] = useState(false);
   const [showDoctorList, setShowDoctorList] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
@@ -23,6 +23,7 @@ const PatientConsultation = () => {
   useEffect(() => {
     fetchConsultations();
     fetchDoctors();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const PatientConsultation = () => {
       }, 3000);
       return () => clearInterval(interval);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedConsultation]);
 
   useEffect(() => {

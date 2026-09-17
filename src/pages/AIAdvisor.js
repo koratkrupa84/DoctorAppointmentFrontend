@@ -11,7 +11,6 @@ const AIAdvisor = () => {
   const [selectedCategory, setSelectedCategory] = useState("general");
   const [isRecording, setIsRecording] = useState(false);
   const [showSymptomChecker, setShowSymptomChecker] = useState(false);
-  const [symptoms, setSymptoms] = useState([]);
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
   const [showQuickActions, setShowQuickActions] = useState(true);
   const messagesEndRef = useRef(null);

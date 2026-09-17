@@ -8,7 +8,6 @@ import AlphanumericCaptcha from "../components/Captcha";
 
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
-  const [captchaValue, setCaptchaValue] = useState("");
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const navigate = useNavigate();
 
@@ -25,7 +24,7 @@ const Login = () => {
 
     // Validate captcha
     if (!isCaptchaValid) {
-      alert("❌ Incorrect captcha! Please try again.");
+      alert(" Incorrect captcha! Please try again.");
       return;
     }
 
@@ -143,7 +142,7 @@ const Login = () => {
 
           {/* forgot password */}
           <div className="forgot-row">
-            <a href="#" className="forgot-link" onClick={(e) => { e.preventDefault(); navigate("/forgot-password"); }}>Forgot Password?</a>
+            <a href="/forgot-password" className="forgot-link" onClick={(e) => { e.preventDefault(); navigate("/forgot-password"); }}>Forgot Password?</a>
           </div>
 
           {/* captcha */}
@@ -167,9 +166,9 @@ const Login = () => {
 
           {/* social icons */}
           <div className="social-icons">
-            <a href="#" className="social-icon"><i className="fab fa-google"></i></a>
-            <a href="#" className="social-icon"><i className="fab fa-facebook-f"></i></a>
-            <a href="#" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
+            <a href="https://accounts.google.com" target="_blank" rel="noopener noreferrer" className="social-icon"><i className="fab fa-google"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon"><i className="fab fa-facebook-f"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
           </div>
 
           {/* new patient? */}

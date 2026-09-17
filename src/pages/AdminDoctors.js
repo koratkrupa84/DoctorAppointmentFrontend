@@ -13,6 +13,7 @@ const AdminDoctors = () => {
 
   useEffect(() => {
     fetchDoctors();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchDoctors = useCallback(async () => {
